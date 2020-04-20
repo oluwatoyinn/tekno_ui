@@ -1,0 +1,160 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.active
+{
+  background-color: blue !important;
+  color: #ffff !important;
+}
+
+.brand_image 
+{
+  border-radius: 50%;
+  width: 50%;
+  height: 80px;
+  padding: 10px;
+
+}
+.img-circle
+{
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.avatar
+{
+ margin-left: 40px;
+}
+.brand-text
+{
+  text-align: center;
+  margin-left: 24px;
+}
+.img_text
+{
+  font-size: small;
+  text-align: center;
+  margin-right: 29px;
+}
+
+/* Display content */
+.user
+{
+  background-color: #fd7e14;
+  margin-right: 70px;
+}
+.user_image
+{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 30px;
+  margin-left: 70px;
+}
+.profile
+{
+  margin: 20px;
+}
+.status
+{
+  font-size: 1em;
+  font-weight: bold;
+  margin-left: 60px;
+}
+h2
+{
+  font-size: 1em;
+  font-weight: bold;
+  margin-left: 45px;
+}
+.img-centre{
+  text-align: center;
+}
+
+.img-centre img{
+  height: 100px;
+  width: 100px;
+}
+
+.inf {
+ 
+  text-align: center;
+  color:white;
+}
+.inf2 {
+ 
+  text-align: center;
+  color:black;
+}
+
+.purple{
+
+  color:#bf10de;
+}
+
+.font-text
+{
+  font-size: 13px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.customer-font
+{
+  font-size: 14px;
+}
+
+.divider
+{
+  width:100%;
+  height:0.2px;
+  background-color: rgba(83, 78, 78, 0.197);
+  margin: 3px;
+}
+
+.border-right
+{
+  border:none;
+  border-right: 1px solid black;
+}
+
+table.join { 
+  border-collapse:separate; 
+  border-spacing:0 15px; 
+} 
