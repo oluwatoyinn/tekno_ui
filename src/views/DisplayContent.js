@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Form, Col} from 'react-bootstrap'
 import {Route, Switch} from 'react-router-dom'
 import Department from '../components/Department'
 import ContractCleaning from '../components/ContractCleaning'
@@ -7,6 +6,7 @@ import InternalControl from '../components/InternalControl';
 import Account from '../components/Account'
 import Clients from '../components/Clients'
 import { HumanResources } from '../components/HumanResources';
+
 
 
 class DisplayContent extends Component {

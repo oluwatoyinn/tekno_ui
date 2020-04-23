@@ -54,19 +54,19 @@ export class AsideBar extends Component {
             </li>
             <li className="nav-item">
               <Link to="/clients" className="nav-link">
-              <i class="fas fa-shopping-bag nav-icon"></i>
+              <i className="fas fa-shopping-bag nav-icon"></i>
                 <p>Clients</p>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/internalcontrol" className="nav-link">
-              <i class=" nav-icon fas fa-cog"></i>
+              <i className=" nav-icon fas fa-cog"></i>
                 <p>Internal Control</p>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/setting" className="nav-link">
-              <i class=" nav-icon fas fa-cog"></i>
+              <i className=" nav-icon fas fa-cog"></i>
                 <p>Settings</p>
               </Link>
             </li>

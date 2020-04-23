@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Link} from 'react-router-dom'
-import {axiosClient} from '../utils/configs'
-
-const url = "/biodata"
 
 class bin extends Component {
     constructor(props) {
@@ -30,10 +27,10 @@ class bin extends Component {
     }
     
     getAmbassador =() =>{
-        axiosClient.get(url)
+        axios.get(`http://localhost:3000/biodata`)
         .then(res=>{
             this.setState({
-                data:res.data.sort((a,b)=>a-b).reverse()
+                data:res.data
             })
         })
     }
@@ -50,25 +47,11 @@ handleSubmit =() =>{
         location:this.state.location
     }
 
-    axiosClient.post(url, ambassador)
+    axios.post(`http://localhost:3000/biodata`, ambassador)
     .then(res =>{
         this.setState({
             modal:false
         })
-        this.getAmbassador()
-        this.resetFormData()
-    })
-   
-}
-
-resetFormData =()=>{
-    this.setState({
-        name:"",
-        address:"",
-        email:"",
-        phoneNumber:"",
-        guarantor:"",
-        location:""
     })
 }
 
@@ -228,7 +211,7 @@ toggle =() =>{
                         
                     </ModalBody>
                     <ModalFooter>
-                        <Button className="bg-primary w-100" onClick={this.handleSubmit}>Add New</Button>
+                        <Button color="secondary" onClick={this.handleSubmit}>Add New</Button>
                     </ModalFooter>
                     </Modal>
               

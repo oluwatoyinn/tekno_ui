@@ -1,10 +1,167 @@
 {
-    "biodata":[
-        {
-            
-        }
-
-
-
-    ]
+  "biodata": [
+    {
+      "id": 1,
+      "name": "Victor Ajayi",
+      "address": "12 Shomlou Lagos",
+      "phoneNumber": "09087564567",
+      "email": "victor.ahakhd@mymail.com",
+      "guarantor": "Cahles Kingston",
+      "location": "Microsoft"
+    },
+    {
+      "id": 2,
+      "name": "Victoris Nelson",
+      "address": "8 shkjdyhwk Abuja Nigeria",
+      "phoneNumber": "0803627648929",
+      "email": "2f15mzcosh5@fakemailgenerator.ne",
+      "guarantor": "Chuks Davuid O",
+      "location": "Access Bank Seme"
+    },
+    {
+      "id": 3,
+      "name": "Victor Cynthia",
+      "address": "7 Abule Nla Lagis",
+      "phoneNumber": "090526861792",
+      "email": "r5ycm39ch1m@meantinc.com",
+      "guarantor": "Fan Chaletrd",
+      "location": "Fuirst Vbal"
+    },
+    {
+      "id": 4,
+      "name": "Victer Chris",
+      "address": "35 Igwe Charles Street USA",
+      "phoneNumber": "+2341653728920",
+      "email": "8zxeen1s9aw@fakemailgenerator.net",
+      "guarantor": "Chris Gube",
+      "location": "Computers Store"
+    },
+    {
+      "id": 5,
+      "name": "Ibrahim James",
+      "address": "67 Etranzact Victoria Island ",
+      "phoneNumber": "090289379294",
+      "email": "vs2xyocbd7s@fakemailgenerator.net",
+      "guarantor": "Mines Wrist",
+      "location": "E-teminology System"
+    },
+    {
+      "id": 6,
+      "name": "Noah Anore",
+      "address": "76 Lewis Street UK",
+      "phoneNumber": "8972876382920",
+      "email": "599ky0r2qd@meantinc.com",
+      "guarantor": "Victor Chrales",
+      "location": "Ijewere Chuols"
+    },
+    {
+      "id": 7,
+      "name": "Victor Bills",
+      "address": "867 Bills Clinton Street UK",
+      "phoneNumber": "+3246781782892",
+      "email": "5uzqpawdf3v@groupbuff.com",
+      "guarantor": "Bill Clinton",
+      "location": "Microsoft Technology"
+    },
+    {
+      "id": 8,
+      "name": "Famous Ajay",
+      "address": "867 Bills Clinton Street Liberia",
+      "phoneNumber": "070645634536",
+      "email": "q5av3xwhwp@meantinc.com",
+      "guarantor": "Chuks Hanger",
+      "location": "New Horizon Pro"
+    },
+    {
+      "id": 9,
+      "name": "Cynthia Favorite",
+      "address": "867 Bills Clinton Street South Africa",
+      "phoneNumber": "0506746435376",
+      "email": "27id6otzbqz@groupbuff.com",
+      "guarantor": "Blessing Grace",
+      "location": "CitiBank Plc"
+    },
+    {
+      "id": 10,
+      "name": "Blessing Cynthia",
+      "address": "425 Lekki Phase 2 Lagos",
+      "phoneNumber": "29-209-31186",
+      "email": "xz0yj8h1dbp@meantinc.com",
+      "guarantor": "Mine James P",
+      "location": "New Heritage"
+    },
+    {
+      "id": 11,
+      "name": "Terry Kuphal",
+      "address": "1046 O Conner Street Cuthbert, Georgia(GA)",
+      "phoneNumber": " 229-209-3115",
+      "email": "breanne.conn@gmail.com",
+      "guarantor": "Terra Golfer",
+      "location": "Asiatic Solutions"
+    },
+    {
+      "id": 12,
+      "name": "Debra W Torres",
+      "address": "1046 O Conner Street Cuthbert, Georgia(GA)",
+      "phoneNumber": "29-209-31167",
+      "email": "adolfo_colli@gmail.com",
+      "guarantor": "Chuks l James",
+      "location": "Back To Basics Chiropractic Clinic"
+    },
+    {
+      "id": 13,
+      "name": "Vicki S Pierre",
+      "address": "5 Abule Ijesh Yaba",
+      "phoneNumber": "08978675467",
+      "email": "adolfo_colli@gmail.com",
+      "guarantor": "Charkes Ugio",
+      "location": "De United Foods"
+    },
+    {
+      "id": 14,
+      "name": "Jorge L Giles",
+      "address": "2737 Mulberry Avenue Arkansas(AR)",
+      "phoneNumber": "501-395-0957",
+      "email": "griffin.gle@hotmail.com",
+      "guarantor": "terry kuphal",
+      "location": "Beta Computers"
+    },
+    {
+      "name": "Victor James ",
+      "address": "8 YabaTech Layout Lagos State",
+      "phoneNumber": "09086767576",
+      "email": "mymail@gmail.com",
+      "guarantor": "Mr. Olarewaju James ",
+      "location": "MultiChoice",
+      "id": 15
+    },
+    {
+      "name": "James Ibrahim",
+      "address": "90 Abule Nla Yaba Lagos",
+      "phoneNumber": "0907675672782",
+      "email": "jameshim@mymail.com",
+      "guarantor": "Victor 0. Ajayi",
+      "location": "Etranzact",
+      "id": 16
+    },
+    {
+      "name": "Noah Victor",
+      "address": "8 Shodipe Street Yaba Lagos",
+      "phoneNumber": "87868699299",
+      "email": "noah.victor@gmail.com",
+      "guarantor": "Ibrahim Yinkus",
+      "location": "Micrososft",
+      "id": 17
+    },
+    {
+      "name": "Beautiful Name",
+      "address": "23 YabaTech Layout Lagos State",
+      "phoneNumber": "09083982922",
+      "email": "beautifulname@mymail.com",
+      "guarantor": "Name O Jesus",
+      "location": "Paradise",
+      "id": 18
+    } 
+    
+  ]
 }

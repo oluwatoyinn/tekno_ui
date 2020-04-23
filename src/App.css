@@ -37,6 +37,13 @@
   }
 }
 
+/* ContentWrapper */
+.wrap
+{
+  background-color: #fff;
+  color: #fff;
+}
+
 .active
 {
   background-color: blue !important;
