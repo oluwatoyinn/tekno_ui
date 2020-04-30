@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Link} from 'react-router-dom'
+import {axiosClient} from '../utils/configs'
+import SimpleReactValidator from 'simple-react-validator' 
 
-class bin extends Component {
+const url = "/biodata"
+// Form V
+
+class Bin extends Component {
     constructor(props) {
       super(props)
     
@@ -19,6 +24,7 @@ class bin extends Component {
 
          modal:false
       }
+      this.validator = new SimpleReactValidator();
     }
 
 // Get 
@@ -27,15 +33,29 @@ class bin extends Component {
     }
     
     getAmbassador =() =>{
-        axios.get(`http://localhost:3000/biodata`)
+        axiosClient.get(url)
         .then(res=>{
             this.setState({
-                data:res.data
+                data:res.data.sort((a,b)=>a-b).reverse()
             })
         })
     }
     
 // Post
+
+validateFinalSubmit =(event)=>{
+
+    event.preventDefault()
+    if(this.validator.allValid())
+    {
+        this.handleSubmit()
+    }else
+    {
+        this.validator.showMessages()
+        this.forceUpdate()
+    }
+
+}
 
 handleSubmit =() =>{
     const ambassador ={
@@ -47,11 +67,25 @@ handleSubmit =() =>{
         location:this.state.location
     }
 
-    axios.post(`http://localhost:3000/biodata`, ambassador)
+    axiosClient.post(url, ambassador)
     .then(res =>{
         this.setState({
             modal:false
         })
+        this.getAmbassador()
+        this.resetFormData()
+    })
+   
+}
+
+resetFormData =()=>{
+    this.setState({
+        name:"",
+        address:"",
+        email:"",
+        phoneNumber:"",
+        guarantor:"",
+        location:""
     })
 }
 
@@ -137,7 +171,7 @@ toggle =() =>{
                     >
                     <ModalHeader toggle={this.toggle} close={closeBtn}>Add New Ambassador</ModalHeader>
                     <ModalBody>
-                    <div className="md-form mb-3">
+                        <div className="md-form mb-3">
                             <i className="fas fa-user prefix grey-text" />
                             <label data-error="wrong" data-success="right" htmlFor="name">Name</label>
                             <input 
@@ -147,6 +181,7 @@ toggle =() =>{
                             value={name} 
                             onChange={this.handleChange} 
                             className="form-control validate" />
+                            {this.validator.message('name', name, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
@@ -159,6 +194,7 @@ toggle =() =>{
                             value={address} 
                             onChange={this.handleChange} 
                             className="md-textarea form-control" />
+                            {this.validator.message('address', address, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
@@ -171,6 +207,7 @@ toggle =() =>{
                             value={email} 
                             onChange={this.handleChange} 
                             className="form-control validate" />
+                            {this.validator.message('email',email, 'required|email')}
                         </div>
 
                         <div className="md-form mb-3">
@@ -183,6 +220,7 @@ toggle =() =>{
                             value={phoneNumber} 
                             onChange={this.handleChange} 
                             className="form-control validate" />
+                            {this.validator.message('phoneNumber',phoneNumber, 'required|numeric')}
                         </div>
 
                         <div className="md-form mb-3">
@@ -195,6 +233,7 @@ toggle =() =>{
                             value={guarantor} 
                             onChange={this.handleChange} 
                             className="form-control validate" />
+                            {this.validator.message('guarantor', guarantor, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
@@ -207,11 +246,12 @@ toggle =() =>{
                             value={location} 
                             onChange={this.handleChange} 
                             className="form-control validate" />
+                            {this.validator.message('location',location, 'required|alpha')}
                         </div>
                         
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={this.handleSubmit}>Add New</Button>
+                        <Button className="bg-primary w-100" onClick={this.validateFinalSubmit}>Add New</Button>
                     </ModalFooter>
                     </Modal>
               
@@ -222,4 +262,4 @@ toggle =() =>{
     }
 }
 
-export default bin
+export default Bin

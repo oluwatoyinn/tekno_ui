@@ -161,7 +161,15 @@
       "guarantor": "Name O Jesus",
       "location": "Paradise",
       "id": 18
-    } 
-    
+    },
+    {
+      "name": "James Ibrahim",
+      "address": "90 Abule Nla Yaba Lagos",
+      "phoneNumber": "090888",
+      "email": "jameshim@mymail.com",
+      "guarantor": "Mr. Olarewaju James ",
+      "location": "MultiChoice",
+      "id": 19
+    }
   ]
 }

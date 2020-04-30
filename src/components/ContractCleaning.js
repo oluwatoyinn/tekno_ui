@@ -3,10 +3,12 @@ import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Link} from 'react-router-dom'
 import {axiosClient} from '../utils/configs'
+import SimpleReactValidator from 'simple-react-validator' 
 
 const url = "/biodata"
+// Form V
 
-class bin extends Component {
+class Bin extends Component {
     constructor(props) {
       super(props)
     
@@ -22,6 +24,7 @@ class bin extends Component {
 
          modal:false
       }
+      this.validator = new SimpleReactValidator();
     }
 
 // Get 
@@ -39,6 +42,20 @@ class bin extends Component {
     }
     
 // Post
+
+validateFinalSubmit =(event)=>{
+
+    event.preventDefault()
+    if(this.validator.allValid())
+    {
+        this.handleSubmit()
+    }else
+    {
+        this.validator.showMessages()
+        this.forceUpdate()
+    }
+
+}
 
 handleSubmit =() =>{
     const ambassador ={
@@ -79,9 +96,10 @@ handleChange = event =>{
 }
 
 toggle =() =>{
-  this.setState({
-      modal:!this.state.modal
-  })
+    this.setState({
+        modal:!this.state.modal
+    })
+    this.validator.hideMessages()
 }
 
 
@@ -154,81 +172,111 @@ toggle =() =>{
                     >
                     <ModalHeader toggle={this.toggle} close={closeBtn}>Add New Ambassador</ModalHeader>
                     <ModalBody>
-                    <div className="md-form mb-3">
-                            <i className="fas fa-user prefix grey-text" />
+                        <div className="md-form mb-3">
                             <label data-error="wrong" data-success="right" htmlFor="name">Name</label>
-                            <input 
-                            type="text" 
-                            id="name" 
-                            name="name"
-                            value={name} 
-                            onChange={this.handleChange} 
-                            className="form-control validate" />
+                                <div className="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i className="fas fa-user prefix grey-text" /></span>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name"
+                                        value={name} 
+                                        onChange={this.handleChange} 
+                                        className="form-control validate" />
+                                </div>
+                            {this.validator.message('name', name, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
-                            <i className="fas fa-pencil prefix grey-text" />
                             <label data-error="wrong" data-success="right" htmlFor="address">Address</label>
-                            <input 
-                            type="text" 
-                            id="address" 
-                            name="address" 
-                            value={address} 
-                            onChange={this.handleChange} 
-                            className="md-textarea form-control" />
+                                <div className="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon3"><i className="fas fa-address-card"></i></span>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        id="address" 
+                                        name="address" 
+                                        value={address} 
+                                        onChange={this.handleChange} 
+                                        className="md-textarea form-control" />
+                                </div>
+                            {this.validator.message('address', address, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
-                            <i className="fas fa-envelope prefix grey-text" />
-                            <label data-error="wrong" data-success="right" htmlFor="email">Email</label>
-                            <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            value={email} 
-                            onChange={this.handleChange} 
-                            className="form-control validate" />
+                             <label data-error="wrong" data-success="right" htmlFor="email">Email</label>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon3"> <i className="fas fa-envelope prefix grey-text"/> </span>
+                                    </div>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        value={email} 
+                                        onChange={this.handleChange} 
+                                        className="form-control validate" />
+                                </div>
+                            {this.validator.message('email',email, 'required|email')}
                         </div>
 
                         <div className="md-form mb-3">
-                            <i className="fas fa-tag prefix grey-text" />
                             <label data-error="wrong" data-success="right" htmlFor="phoneNumber">Phone Number</label>
-                            <input 
-                            type="number" 
-                            id="phoneNumber" 
-                            name="phoneNumber" 
-                            value={phoneNumber} 
-                            onChange={this.handleChange} 
-                            className="form-control validate" />
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon3"><i className="fas fa-phone prefix grey-text" /></span>
+                                    </div>
+                                    <input 
+                                        type="number" 
+                                        id="phoneNumber" 
+                                        name="phoneNumber" 
+                                        value={phoneNumber} 
+                                        onChange={this.handleChange} 
+                                        className="form-control validate" />
+                                </div>
+                            {this.validator.message('phoneNumber',phoneNumber, 'required|numeric')}
                         </div>
 
                         <div className="md-form mb-3">
-                            <i className="fas fa-user prefix grey-text" />
                             <label data-error="wrong" data-success="right" htmlFor="guarantor">Guarantor</label>
-                            <input 
-                            type="text" 
-                            id="guarantor" 
-                            name="guarantor" 
-                            value={guarantor} 
-                            onChange={this.handleChange} 
-                            className="form-control validate" />
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon3"><i className="fas fa-user prefix grey-text" /></span>
+                                    </div>
+                                        <input 
+                                        type="text" 
+                                        id="guarantor" 
+                                        name="guarantor" 
+                                        value={guarantor} 
+                                        onChange={this.handleChange} 
+                                        className="form-control validate" />
+                                </div>
+                            {this.validator.message('guarantor', guarantor, 'required|alpha')}
                         </div>
 
                         <div className="md-form mb-3">
-                            <i className="fas fa-user prefix grey-text" />
                             <label data-error="wrong" data-success="right" htmlFor="location">Location</label>
-                            <input 
-                            type="text" 
-                            id="location" 
-                            name="location" 
-                            value={location} 
-                            onChange={this.handleChange} 
-                            className="form-control validate" />
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon3"><i className="fa fa-map-marker prefix grey-text" /></span>
+                                    </div>
+                                        <input 
+                                        type="text" 
+                                        id="location" 
+                                        name="location" 
+                                        value={location} 
+                                        onChange={this.handleChange} 
+                                        className="form-control validate" />
+                                </div>
+                            {this.validator.message('location',location, 'required|alpha')}
                         </div>
                         
                     </ModalBody>
                     <ModalFooter>
-                        <Button className="bg-primary w-100" onClick={this.handleSubmit}>Add New</Button>
+                        <Button className="bg-primary w-100" onClick={this.validateFinalSubmit}>Add New</Button>
                     </ModalFooter>
                     </Modal>
               
@@ -239,4 +287,4 @@ toggle =() =>{
     }
 }
 
-export default bin
+export default Bin
