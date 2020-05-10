@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import {Link} from 'react-router-dom'
-import {axiosClient} from '../utils/configs'
+// import {axiosClient} from '../utils/configs'
 import SimpleReactValidator from 'simple-react-validator' 
 import ApiCalls from '../utils/ApiCalls'
 import {getAmbassador,postAmbassador} from '../actions/AmbassadorAction'
 import {connect} from 'react-redux'
 import {ErrMsg} from "../utils/StyledConstant"
 import SweetAlert from 'react-bootstrap-sweetalert'
-
-const url = "/biodata"
-// Form V
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
 class ContractCleaning extends Component {
     constructor(props) {
@@ -49,6 +48,8 @@ class ContractCleaning extends Component {
     //         })
     //     })
     // }
+
+    
     
 // Post
 
@@ -150,6 +151,7 @@ updateSubmit =(e)=>{
         location:this.state.location
     }
     axios.put(`http://localhost:3000/biodata/${this.state.id}`,ambassador)
+
 //    ApiCalls.putAmbassador(`/${this.state.id}`,ambassador)
    .then(res=>{
     const updateAlert = () =>(
@@ -185,31 +187,19 @@ getSingleAmbassador(id){
     })
 }
 
-// updateAmbassador=()=>{
-//     const ambassador ={
-//         name:this.state.name,
-//         address:this.state.address,
-//         phoneNumber:this.state.phoneNumber,
-//         email:this.state.email,
-//         guarantor:this.state.guarantor,
-//         location:this.state.location
-//     }
-//     axios.put(`http://localhost:3000/biodata/${this.state.id}`.id, ambassador)
-//     .then(res=>{
-//         console.log(res)
-//     })
-// }
-
 updateToggle = (e,id) => {
     e.preventDefault()
     this.setState({
-        modal:true,
         isEdit:true
     })
+    this.toggle()
     this.resetFormData()
     setTimeout(()=>{
         this.getSingleAmbassador(id)
-    },1000)
+    },100)
+    // this.setState({
+    //     address:row.address
+    // })
 
     
 }
@@ -239,28 +229,11 @@ deleteRow =(id)=>{
 
 
     render() {
-
+ 
         const {ambassadors} = this.props
-     
-        const mydata = ambassadors.map((amb,index)=>{
-            return(
-                <tr className="table table-striped table-hover my-3" key={amb.id}  >
-                    <td>{index+1}</td>
-                    <td>{amb.name}</td>
-                    <td>{amb.address}</td>
-                    <td>{amb.email}</td>
-                    <td>{amb.phoneNumber}</td>
-                    <td>{amb.guarantor}</td>
-                    <td>{amb.location}</td>
-                    <td>
-                    <button className="edit" onClick={e=>this.updateToggle(e,amb.id)} ><i className="fas fa-edit text-success"></i></button> {" "}
-                    <button className="del" onClick={this.deleteRow.bind(this,amb.id)}><i className="far fa-trash-alt bg-danger"></i></button> 
-                    </td>
-                </tr>
-            )
-        })
-
-
+        
+        const { SearchBar } = Search;
+        
         const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
 
         const {
@@ -272,53 +245,118 @@ deleteRow =(id)=>{
             location,
             isEdit
         } = this.state
-        return (
-            <>
-            <div className="row shadow-md">
-                <div className="col-md-12 clearfix">
-                    
+
+       
+
+        const columns = [
+            {
+              dataField: 'id',
+              text: '#',
+              hidden:true
+            }, 
+            {
+              dataField: '#',
+              text: '#',
+              headerStyle: (colum, colIndex) => {
+                  return { width: '80px' };
+                },
+              formatter: (amb, row, rowIndex, extraData) => (
+                 
+                      <div>
+                          {rowIndex+1}
+                      </div>
+                ),
+            
+            }, 
+            {
+              dataField: 'name',
+              text: 'Name'
+            }, 
+            {
+              dataField: 'address',
+              text: 'address'
+            }, 
+            {
+              dataField: 'email',
+              text: 'Email'
+            },
+            {
+              dataField: 'phoneNumber',
+              text: 'Phone Number'
+            },
+            {
+              dataField: 'guarantor',
+              text: 'Guarantor'
+            },
+            {
+                dataField: 'location',
+                text: 'Location'
+            },
+            {
+                dataField: 'link',
+                text: 'Action',
+                formatter: (rowContent, row) => {
+                    // console.log(row)
+                    return ( 
+                        <div>
+                        <button className="edit" onClick={e=>this.updateToggle(e, row.id)} ><i className="fas fa-edit text-success"></i></button>
+                        <button className="del" onClick={this.deleteRow.bind(this, row.id)}><i className="far fa-trash-alt bg-danger"></i></button> 
+                        </div>  
+                    )
+                  }
+            },
+          ];
+
+ 
+
+            const rowStyle = { 
+                cursor:'pointer',
+            };
+
+            return(
+                <React.Fragment>
                     <div className="row">
-                            <div className="col-md-8">
-                                <h5 className="d-inline">User Profile</h5>
-                            </div>
-                            <div className="col-md-4">
-                                <button className="btn btn-success float-right mb-2" onClick={this.toggle}>
-                                    <i className="fa fa-plus"></i>Ambassador
-                                </button>
-                            </div>
-                            {/* <Link  className="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm" onClick={this.toggle}>New Ambassador</Link> */}
-                       <div className="col-md-12">
-                           <div className="card">
-                               <div className="card-body">
-                                <table className="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Address</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Phone Number</th>
-                                            <th scope="col">Guarantor</th>
-                                            <th scope="col">Location</th>
-                                            <th scope="col">Action</th>
+                        <div className="col-md-8">
+                            <h5 className="text-left">List of Ambassador</h5>
+                        </div>
+                        <div className="col-md-4">
+                            <button className="btn btn-outline-primary float-right mb-3" onClick={this.toggle}>
+                                <i className="fa fa-plus"></i> Ambassador
+                            </button>
+                        </div>
+                    </div>
+                    {/* Pagination and Search Button start here */}
+                     <div className="card">
+                        <div className="card-body pt-1">
+                            <ToolkitProvider
+                             keyField="id"
+                             caption="List of Ambassador"
+                             data={ambassadors}
+                             columns={ columns }
+                             search
+                             >
+                                {
+                                    props => (
+                                        <div className="mt-1"> 
+                                                < SearchBar  { ...props.searchProps } />                                           
+                                            {/* <hr /> */}
+                                            <BootstrapTable
+                                                { ...props.baseProps }
+                                                pagination={ paginationFactory() }
+                                                rowStyle = {rowStyle}
+                                                bordered={false}
+                                                hover
+                                            />
+                                        </div>
+                                      )
+                                }
+                            </ToolkitProvider>
+                        </div>
+                    </div>
+                    {/* Pagination and Search button ends here */}
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {mydata}
-                                    </tbody>
-                                    </table>  
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   
-                </div>
-                  
-{/* Modal Start here */}
+                    {/* Modal start here */}
 
-                
-                    
                     <Modal 
                     isOpen={this.state.modal} 
                     toggle={this.toggle} 
@@ -442,20 +480,19 @@ deleteRow =(id)=>{
                         
                     </ModalFooter>
                     </Modal>
-              
+
                     {this.state.alert}
-            </div>   
-            </>
-        )
+                </React.Fragment>
+
+            )
     }
 }
-
-
 
 const mapStateToProps = state=>({
 
     ambassadors:state.AmbassadorReducer.ambassadors,
-    errors:state.AmbassadorReducer.errors
+    errors:state.AmbassadorReducer.errors,
+    id:state.AmbassadorReducer.id
 
 
 })

@@ -1,0 +1,2 @@
+export const GET_AMBASSADOR = "GET_AMBASSADOR"
+export const GET_ERRORS = "GET_ERRORS"

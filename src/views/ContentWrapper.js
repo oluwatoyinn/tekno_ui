@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import DisplayContent from './DisplayContent'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 class ContentWrapper extends Component {
     render() {
@@ -12,15 +12,15 @@ class ContentWrapper extends Component {
   <div className="content-header ">
     <div className="container-fluid">
       <div className="row mb-2 wrap">
-        <div className="col-sm-6 ">
+        {/* <div className="col-sm-6 ">
           <h1 className="m-0 text-dark mt-2">Ambassadors</h1>
           <ol className="breadcrumb float-sm-left mt-2">
             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
             <li className="breadcrumb-item"><Link to="/">Customer Management</Link></li>
             <li className="breadcrumb-item">User Profile</li>
           </ol>
-        </div>
-        <div className="col-sm-6">
+        </div> */}
+        {/* <div className="col-sm-6">
           <li className="nav-item has-treeview menu-open">
           <ul className="nav nav-treeview float-sm-right">
             <li className="nav-item">
@@ -30,7 +30,7 @@ class ContentWrapper extends Component {
             </li>
           </ul>
           </li>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

@@ -165,3 +165,24 @@ table.join {
   border-collapse:separate; 
   border-spacing:0 15px; 
 } 
+
+.del
+{
+  border-radius: 80px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit
+{
+  border-radius: 80px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Human Resources  */
+
+.styles
+{
+  text-align: center;
+}

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+// import {Nav, Tabs} from 'react-bootstrap'
+// import Clients from './HumanResources/Clients'
+// import ManageWorkers from './HumanResources/ManageWorkers'
+// import ContractCleaning from './ContractCleaning'
 
 export class HumanResources extends Component {
     render() {
         return (
-            <div>
-                <h1>This page is for Human Resources department</h1>
-            </div>
+            <>
+           <h1>This is for human resources</h1>
+           </>
         )
     }
 }
