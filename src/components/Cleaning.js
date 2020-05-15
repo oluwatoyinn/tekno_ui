@@ -173,6 +173,9 @@ updateSubmit =(e)=>{
 }
 
 getSingleAmbassador(id){
+    this.setState({
+        isEdit:true
+    })
     axios.get(` http://localhost:3000/biodata/${id}`)
     .then(res=>{
         this.setState({

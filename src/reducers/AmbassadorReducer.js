@@ -1,11 +1,11 @@
-import { GET_AMBASSADOR,GET_ERRORS} from '../actions/types';
+import { GET_AMBASSADOR,GET_ERRORS,GET_ISLOADING} from '../actions/types';
 
 const initialState = {
 
     ambassadors:[],
     id:'',
     ambassador:{},
-    isLoading:false,
+    isLoading:true,
     errors:[],
     user:{}
 
@@ -18,7 +18,7 @@ export default function(state= initialState,action)
             return {
 
             ...state,
-            isLoading:true,
+            
             ambassadors:action.payload
              
             }
@@ -26,8 +26,13 @@ export default function(state= initialState,action)
             return {
 
             ...state,
-            errors:action.payload
-                
+            errors:action.payload   
+            }
+
+        case GET_ISLOADING:
+            return{
+                ...state,
+                isLoading:false
             }
     
         default:

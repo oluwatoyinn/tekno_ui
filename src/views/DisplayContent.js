@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {Route, Switch} from 'react-router-dom'
 // import Department from '../components/Department'
-// import Contract from '../components/ContractCleaning'
+import ContractCleaning from '../components/ContractCleaning'
 import InternalControl from '../components/InternalControl';
 import Account from '../components/Account'
 import Clients from '../components/Clients'
 import { HumanResources } from '../components/HumanResources';
 import TestingFormik from '../components/TestingFormik'
-import Cleaning from '../components/Cleaning'
+import AmbassadorCleaning from '../components/AmbassadorCleaning'
 
 
 
@@ -18,8 +18,7 @@ class DisplayContent extends Component {
               <Switch>
                     {/* <Route exact path="/" component={Department}/> */}
                     <Route path="/humanresources" component={HumanResources}/>
-                    <Route exact path="/" component={Cleaning}/>
-                    {/* <Route exact path="/" component={ContractCleaning} /> */}
+                    <Route exact path="/" component={AmbassadorCleaning} />
                     <Route path="/account" component={Account}/>
                     <Route path="/internalcontrol" component={InternalControl}/>
                     <Route path="/testingformik" component={TestingFormik}/>

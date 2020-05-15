@@ -125,6 +125,24 @@
       "guarantor": "Victoria  Ancient",
       "location": "Imperial Colleges",
       "id": 23
+    },
+    {
+      "name": "Noah Victor",
+      "address": "35 Shodipe Maryland Lagos",
+      "phoneNumber": "09887766456",
+      "email": "noah.victor@mymail.com",
+      "guarantor": "Noah Adeyanju",
+      "location": "MultiChoice",
+      "id": 24
+    },
+    {
+      "name": "Yinkus Adeyanju",
+      "address": "98 Adeyanju Street Yaba Lagos",
+      "phoneNumber": "090909090909",
+      "email": "yinka.adeyanju@mymail.com",
+      "guarantor": "Victor 0. Ajayi",
+      "location": "CitiBank Plc",
+      "id": 25
     }
   ]
 }
