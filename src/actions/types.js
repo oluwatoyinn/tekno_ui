@@ -1,3 +1,4 @@
 export const GET_AMBASSADOR = "GET_AMBASSADOR"
 export const GET_ERRORS = "GET_ERRORS"
 export const GET_ISLOADING = "GET_ISLOADING"
+export const STOP_LOADING ="STOP_LOADING"

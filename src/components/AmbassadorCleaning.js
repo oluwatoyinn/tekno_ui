@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button,Modal,ModalHeader,ModalBody, ModalFooter } from 'reactstrap';
 // import {axiosClient} from '../utils/configs'
 import SimpleReactValidator from 'simple-react-validator' 
 import ApiCalls from '../utils/ApiCalls'
-import {getAmbassador,postAmbassador,isLoading} from '../actions/AmbassadorAction'
+import {getAmbassador, postAmbassador} from '../actions/AmbassadorAction'
 import {connect} from 'react-redux'
 import {ErrMsg} from "../utils/StyledConstant"
 import SweetAlert from 'react-bootstrap-sweetalert'
+import {url} from '../utils/ApiCalls'
 import MyLoader from './HumanResources/MyLoader'
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 
 
-// const url ="http://127.0.0.1:8000/api/ambassadors"
 
 class AmbassadorCleaning extends Component {
     constructor(props) {
       super(props)
     
       this.state = {
-         id:'',
-         name:'',
-         address:'',
-         phoneNumber:'',
-         email:'',
-         guarantor:'',
-         location:'',
+        //  id:'',
+        //  name:'',
+        //  address:'',
+        //  phoneNumber:'',
+        //  email:'',
+        //  guarantor:'',
+        //  location:'',
 
          modal:false,
          isEdit:false,
@@ -38,12 +38,9 @@ class AmbassadorCleaning extends Component {
       this.validator = new SimpleReactValidator();
     }
 
-
-componentDidMount(){
+componentDidMount(){      
     this.props.getAmbassador()
-
 }
-
 // getAmbassador=()=>{
 //     axios.get(`http://127.0.0.1:8000/api/ambassadors`)
 //     .then(res =>{
@@ -66,7 +63,6 @@ validateFinalSubmit =(event)=>{
         this.validator.showMessages()
         this.forceUpdate()
     }
-
 }
 
 handleSubmit=()=>{
@@ -79,7 +75,8 @@ handleSubmit=()=>{
         guarantor:this.state.guarantor,
         location:this.state.location
     }
-    axios.post(`http://127.0.0.1:8000/api/ambassadors`, newAmbassador)
+    ApiCalls.postAmbassador(newAmbassador)
+    // axios.post(`http://127.0.0.1:8000/api/ambassadors`, newAmbassador)
     .then(res=>{
         const displayAlert = () =>(
             <SweetAlert
@@ -98,17 +95,13 @@ handleSubmit=()=>{
     
 }
 
-
 hideAlert = ()=> {
-
     this.setState({
     alert: null,
     modal:false
-   
     });
    this.getSingleAmbassador()
-    this.resetFormData()
-   
+    this.resetFormData() 
 }
 
 resetFormData =()=>{
@@ -122,11 +115,13 @@ resetFormData =()=>{
     })
 }
 
+
 handleChange = event =>{
     this.setState({
         [event.target.name] :event.target.value
     })
 }
+
 
 toggle =() =>{
     this.setState({
@@ -136,8 +131,8 @@ toggle =() =>{
     this.validator.hideMessages()
 }
 
-//Put post stop from 
 
+//Put post stop from 
 
 updateSubmit = (e)=>{
     e.preventDefault();
@@ -151,7 +146,8 @@ updateSubmit = (e)=>{
         guarantor:this.state.guarantor,
         location:this.state.location
     }
-    axios.put(`http://127.0.0.1:8000/api/ambassadors/${this.state.id}`, newAmbassador)
+ 
+    axios.put(`${url}/${this.state.id}`, newAmbassador)
     .then(res=>{
         const updateAlert = () =>(
             <SweetAlert
@@ -172,11 +168,14 @@ updateSubmit = (e)=>{
 }
 
 
+
 getSingleAmbassador =(id)=>{
     this.setState({
         isEdit:true
     })
-    axios.get(`http://127.0.0.1:8000/api/ambassadors/${id}`)
+    // ApiCalls.getSingleAmbassador()
+
+    axios.get(`${url}/${id}`)
     .then(res=>{
         this.setState({
             id:res.data.data.id,
@@ -194,7 +193,7 @@ updateToggle=(e,id) =>{
     e.preventDefault();
     this.setState({
         isEdit:true
-    })
+    }) 
     this.toggle()
     this.resetFormData()
     setTimeout(()=>{
@@ -213,7 +212,7 @@ updateToggle=(e,id) =>{
 }
 
 deleteRow =(id)=>{
-    axios.delete(`http://127.0.0.1:8000/api/ambassadors/${id}`)
+    axios.delete(`${url}/${id}`)
     .then(res=>{
         const deleteAlert = () =>(
             <SweetAlert
@@ -227,24 +226,15 @@ deleteRow =(id)=>{
             alert:deleteAlert()
         })
      this.props.getAmbassador()   
-    })
-    
+    }) 
 }
-
-
-componentWillUnmount(){
-
-    this.props.isLoading()
-
-}
-
 
 
     render() {
-        
-        if(this.state.isLoading) return <MyLoader msg="Please wait..." />
+        // if(this.props.isLoading) return <MyLoader msg="Please wait..." />
  
         const {ambassadors} = this.props
+        const {isLoading} = this.props
         
         const { SearchBar } = Search;
         
@@ -328,7 +318,7 @@ componentWillUnmount(){
                 cursor:'pointer',
             };
 
-            return(
+            return isLoading ? <MyLoader msg="Please wait..."/> : (
                 <React.Fragment>
                     <div className="row">
                         <div className="col-md-8">
@@ -513,10 +503,10 @@ componentWillUnmount(){
 const mapStateToProps = state=>({
 
     ambassadors:state.AmbassadorReducer.ambassadors,
-    errors:state.AmbassadorReducer.errors,
-    isLoading:state.AmbassadorReducer.isLoading,
+    // errors:state.AmbassadorReducer.errors,
+    isLoading:state.AmbassadorReducer.isLoading
 
 
 })
 
-export default connect(mapStateToProps,{getAmbassador,postAmbassador,isLoading})(AmbassadorCleaning)
+export default connect(mapStateToProps,{getAmbassador,postAmbassador})(AmbassadorCleaning)

@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 
 
 const MyLoader = ({msg}) => (
-
+    
         <div style={fontStyle}>
             <Loader type="Oval" color="#007bff" height={80} width={50} />
             <div className="" style={{fontSize: '16px',marginLeft:'-10px'}}>
