@@ -13,6 +13,7 @@ import MyLoader from './HumanResources/MyLoader'
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
+// import ConfirmButton from '../utils/Constant'
 
 
 
@@ -34,7 +35,7 @@ class AmbassadorCleaning extends Component {
         //  isLoading:true,
          alert:null
       }
-
+      this.deleteRow = this.deleteRow.bind(this)
       this.validator = new SimpleReactValidator();
     }
 
@@ -190,7 +191,8 @@ getSingleAmbassador =(id)=>{
 }
 
 updateToggle=(e,id) =>{
-    e.preventDefault();
+    // e.preventDefault();
+    e.stopPropagation();
     this.setState({
         isEdit:true
     }) 
@@ -211,7 +213,9 @@ updateToggle=(e,id) =>{
     // })
 }
 
-deleteRow =(id)=>{
+
+deleteRow =(e,id)=>{
+    e.stopPropagation();
     axios.delete(`${url}/${id}`)
     .then(res=>{
         const deleteAlert = () =>(
@@ -305,7 +309,8 @@ deleteRow =(id)=>{
                     return ( 
                         <div className="d-flex">
                         <button className="edit" onClick={e=>this.updateToggle(e, row.id)} ><i className="fas fa-edit text-success"></i></button>
-                        <button className="del" onClick={this.deleteRow.bind(this, row.id)}><i className="far fa-trash-alt bg-danger"></i></button> 
+                        {/* <button className="del" onClick={e=>this.deleteRow(e, row.id)}><i className="far fa-trash-alt bg-danger"></i></button>  */} 
+                        <button className="del" onClick={e=>{if(window.confirm('Delete the Row')){this.deleteRow(e, row.id)}}}><i className="far fa-trash-alt bg-danger"></i></button> 
                         </div>  
                     )
                   }
@@ -317,6 +322,15 @@ deleteRow =(id)=>{
             const rowStyle = { 
                 cursor:'pointer',
             };
+
+            // onclick to get more data
+            const rowEvents = {
+                    onClick:(e,row)=>{
+                        e.preventDefault()
+                        this.props.history.push(`/dashboard/ambassadorprofile/${row.id}`)
+                    }
+            }
+
 
             return isLoading ? <MyLoader msg="Please wait..."/> : (
                 <React.Fragment>
@@ -350,6 +364,7 @@ deleteRow =(id)=>{
                                                 pagination={ paginationFactory() }
                                                 rowStyle = {rowStyle}
                                                 bordered={false}
+                                                rowEvents={rowEvents}
                                                 hover
                                             />
                                         </div>

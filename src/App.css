@@ -1,3 +1,6 @@
+/* *{
+  background-color: #f5fcfc;
+} */
 .App {
   text-align: center;
 }
@@ -187,3 +190,143 @@ table.join {
 {
   text-align: center;
 }
+
+/* LOGIN FORM */
+
+.header
+{
+  font-size: 30px;
+  color: #1c8adb;
+
+}
+
+.login_form
+{
+  background: #f5fcfc;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 455px;
+  height: 500px;
+  text-align: center;
+  box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+
+}
+.login_form h2{
+  color: #1c8adb;
+  margin-bottom: 30px;
+}
+.input-box{
+  border-radius: 5px;
+  padding: 8px;
+  margin:13px 0px;
+  width: 90%;
+  border: 1px solid #999;
+  outline: none;
+} 
+.login_form button
+{
+  color: #fff;
+  width: 95%;
+  padding: 8px;
+   border-radius: 5px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   outline: none;
+   cursor: pointer;
+}
+.signup-btn
+{
+ background-color: #1c8adb;  
+}
+.email-btn
+{
+  background-color: #21afde;
+}
+.sign-up-form a
+{
+  text-decoration: none;
+}
+
+.sign-up-form hr
+{
+  margin-top: 20px;
+  width: 80%;
+}
+.or
+{
+  background: #fff;
+  width: 30px;
+  margin: -29px auto 10px;
+}
+.login_form img
+{
+  width: 50px;
+  margin-top: -40px;
+  border-radius: 50%;
+}
+
+/* SIGN UP  */
+.sign-up-form
+{
+  background: #f5fcfc;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 570px;
+  text-align: center;
+  box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+}
+
+.register_form
+{
+  border-radius: 20px;
+  padding: 8px;
+  margin:13px 0px;
+  width: 100%;
+  /* border: 1px solid #999; */
+  outline: none;
+}
+.sign-up-form img
+{
+  width: 50px;
+  margin-top: -50px;
+  border-radius: 50%;
+}
+.sign-up-form button
+{
+  color: #fff;
+  width: 70%;
+  padding: 10px;
+   border-radius: 20px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   outline: none;
+   cursor: pointer;
+}
+.logout-btn
+{
+  border:none;
+  background-color: red;
+  color: #fff !important;
+  /* border-radius: 20px; */
+}
+
+.sign-up-form button
+{
+  color: #fff;
+  width: 95%;
+  padding: 8px;
+   border-radius: 5px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   outline: none;
+   cursor: pointer;
+}
+

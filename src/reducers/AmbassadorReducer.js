@@ -1,4 +1,4 @@
-import { GET_AMBASSADOR,GET_ERRORS,GET_ISLOADING, STOP_LOADING} from '../actions/types';
+import { GET_AMBASSADOR,GET_ERRORS,GET_STARTLOADING, GET_STOPLOADING} from '../actions/types';
 
 const initialState = {
 
@@ -25,13 +25,13 @@ export default function(state= initialState,action)
             errors:action.payload   
             }
 
-        case GET_ISLOADING:
+        case GET_STARTLOADING:
             return{
                 ...state,
                 isLoading:true
             }
         
-        case STOP_LOADING:
+        case GET_STOPLOADING:
         return{
             ...state,
             isLoading:false

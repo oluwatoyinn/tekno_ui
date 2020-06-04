@@ -1,4 +1,4 @@
-import {GET_AMBASSADOR,GET_ERRORS, GET_ISLOADING,STOP_LOADING} from './types'
+import {GET_AMBASSADOR,GET_ERRORS, GET_STARTLOADING,GET_STOPLOADING} from './types'
 // import {startLoading, stopLoading} from '../reducers/AmbassadorReducer'
 import {axiosClient} from '../utils/configs'
 
@@ -6,13 +6,13 @@ const url = "/api/ambassadors"
 
 
 export const getAmbassador = () => async dispatch => {
-    dispatch({type:GET_ISLOADING})
+    dispatch({type:GET_STARTLOADING})
     const res = await axiosClient.get(url)
     dispatch({
       type: GET_AMBASSADOR,
       payload: res.data.data
     })
-    dispatch({type:STOP_LOADING})
+    dispatch({type:GET_STOPLOADING})
   }
   // .sort((a,b)=>a-b).reverse()
 

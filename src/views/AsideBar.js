@@ -8,7 +8,7 @@ export class AsideBar extends Component {
      {/* Main Sidebar Container */}
 <aside className="main-sidebar sidebar-dark-primary elevation-4">
   {/* Brand Logo */}
-  <Link to="/" className="brand-link">
+  <Link to="/dashboard" className="brand-link">
     <img src="dist/img/tekno.png" alt="logo" className=" avatar brand_image img-circle"  /> <br/>
     <span className="brand-text font-weight-bold">Welcome Victor</span>
     <p className="img_text">victor.ajayi@teknokleen.com</p>
@@ -35,37 +35,37 @@ export class AsideBar extends Component {
               </Link>
             </li> */}
             <li className="nav-item">
-              <NavLink to="/" className="nav-link activeStyle={{color:'red'}}">
+              <NavLink to="/dashboard" className="nav-link activeStyle={{color:'red'}}">
                 <i className="fa fa-user-plus nav-icon" />
                 <p>Contract Cleaning</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/humanresources" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/humanresources" className="nav-link" activeStyle={{color:'red'}}>
                 <i className="fa fa-users nav-icon" />
                 <p>Human Resources</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/account" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/account" className="nav-link" activeStyle={{color:'red'}}>
               <i className="fa fa-calculator nav-icon" />
                 <p>Accounts</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/clients" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/clients" className="nav-link" activeStyle={{color:'red'}}>
               <i className="fas fa-shopping-bag nav-icon"></i>
                 <p>Clients</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/internalcontrol" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/internalcontrol" className="nav-link" activeStyle={{color:'red'}}>
               <i className=" nav-icon fas fa-cog"></i>
                 <p>Internal Control</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/setting" className="nav-link">
+              <Link to="/dashboard/setting" className="nav-link">
               <i className=" nav-icon fas fa-cog"></i>
                 <p>Settings</p>
               </Link>

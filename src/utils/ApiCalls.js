@@ -14,4 +14,5 @@ export default {
 
 }
 
-export const url ="http://127.0.0.1:8000/api/ambassadors"
+export const url ="https://teknokleen-api.herokuapp.com/api/ambassadors"
+// export const local_url ="http://127.0.0.1:8000/api/ambassadors"

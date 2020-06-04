@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+// import Login from '../components/Login'
 
 class NavBar extends Component {
     render() {
@@ -34,10 +35,10 @@ class NavBar extends Component {
   <ul className="navbar-nav ml-auto">
     {/* Messages Dropdown Menu */}
     <li className="nav-item dropdown">
-      <Link className="nav-link" data-toggle="dropdown" to="/">
+      {/* <Link className="nav-link" data-toggle="dropdown" to="/">
         <i className="far fa-comments" />
         <span className="badge badge-danger navbar-badge">3</span>
-      </Link>
+      </Link> */}
       <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <Link to="/" className="dropdown-item">
           {/* Message Start */}
@@ -91,7 +92,7 @@ class NavBar extends Component {
       </div>
     </li>
     {/* Notifications Dropdown Menu */}
-    <li className="nav-item dropdown">
+    {/* <li className="nav-item dropdown">
       <Link className="nav-link" data-toggle="dropdown" to="/">
         <i className="far fa-bell" />
         <span className="badge badge-warning navbar-badge">15</span>
@@ -116,10 +117,13 @@ class NavBar extends Component {
         <div className="dropdown-divider" />
         <Link to="/" className="dropdown-item dropdown-footer">See All Notifications</Link>
       </div>
-    </li>
-    <li className="nav-item">
-      <Link className="nav-link" data-widget="control-sidebar" data-slide="true" to="/"><i className="fas fa-th-large" /></Link>
-    </li>
+    </li> */}
+    <button className="logout-btn">
+      <li className="nav-item ">
+        <Link className="nav-link"  to="/"><i className="fa fa-sign-out" />LogOut</Link>
+      </li>
+    </button>
+    
   </ul>
 </nav>
 
