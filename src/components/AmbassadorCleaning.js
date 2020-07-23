@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Button,Modal,ModalHeader,ModalBody, ModalFooter } from 'reactstrap';
 // import {axiosClient} from '../utils/configs'
 import SimpleReactValidator from 'simple-react-validator' 
-import ApiCalls from '../utils/ApiCalls'
+// import ApiCalls from '../utils/ApiCalls'
 import {getAmbassador, postAmbassador} from '../actions/AmbassadorAction'
 import {connect} from 'react-redux'
 import {ErrMsg} from "../utils/StyledConstant"
@@ -13,6 +13,7 @@ import MyLoader from './HumanResources/MyLoader'
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
+import {getAmbGuarantor} from '../guarantors/GuarantorProfile'
 // import ConfirmButton from '../utils/Constant'
 
 
@@ -22,18 +23,15 @@ class AmbassadorCleaning extends Component {
       super(props)
     
       this.state = {
-        //  id:'',
-        //  name:'',
-        //  address:'',
-        //  phoneNumber:'',
-        //  email:'',
-        //  guarantor:'',
-        //  location:'',
-
-         modal:false,
-         isEdit:false,
-        //  isLoading:true,
-         alert:null
+        name:"",
+        address:"",
+        email:"",
+        phoneNumber:"",
+        gender:"",
+        location:"",
+        modal:false,
+        isEdit:false,
+        alert:null
       }
       this.deleteRow = this.deleteRow.bind(this)
       this.validator = new SimpleReactValidator();
@@ -73,10 +71,11 @@ handleSubmit=()=>{
         address:this.state.address,
         phoneNumber:this.state.phoneNumber,
         email:this.state.email,
-        guarantor:this.state.guarantor,
+        gender:this.state.gender,
         location:this.state.location
     }
-    ApiCalls.postAmbassador(newAmbassador)
+    // ApiCalls.postAmbassador(newAmbassador)
+    axios.post(`${url}`, newAmbassador)
     // axios.post(`http://127.0.0.1:8000/api/ambassadors`, newAmbassador)
     .then(res=>{
         const displayAlert = () =>(
@@ -92,8 +91,7 @@ handleSubmit=()=>{
             alert:displayAlert()
         })
         this.props.getAmbassador()
-    })
-    
+    })   
 }
 
 hideAlert = ()=> {
@@ -111,7 +109,7 @@ resetFormData =()=>{
         address:"",
         email:"",
         phoneNumber:"",
-        guarantor:"",
+        gender:"",
         location:""
     })
 }
@@ -144,7 +142,7 @@ updateSubmit = (e)=>{
         address:this.state.address,
         phoneNumber:this.state.phoneNumber,
         email:this.state.email,
-        guarantor:this.state.guarantor,
+        gender:this.state.gender,
         location:this.state.location
     }
  
@@ -184,7 +182,7 @@ getSingleAmbassador =(id)=>{
             address:res.data.data.address,
             phoneNumber:res.data.data.phoneNumber,
             email:res.data.data.email,
-            guarantor:res.data.data.guarantor,
+            gender:res.data.data.gender,
             location:res.data.data.location
         })
     })
@@ -233,6 +231,11 @@ deleteRow =(e,id)=>{
     }) 
 }
 
+getAmbGuarantor =(id) =>{
+    const ambGuarantor = this.props.ambassadors.find( ambassador_id =>ambassador_id.id ===id)
+    return ambGuarantor
+}
+
 
     render() {
         // if(this.props.isLoading) return <MyLoader msg="Please wait..." />
@@ -246,11 +249,10 @@ deleteRow =(e,id)=>{
 
         const {
             name,
-            id,
             address,
             email,
             phoneNumber,
-            guarantor,
+            gender,
             location,
             isEdit
         } = this.state
@@ -294,8 +296,8 @@ deleteRow =(e,id)=>{
               text: 'Phone'
             },
             {
-              dataField: 'guarantor',
-              text: 'Guarantor'
+              dataField: 'gender',
+              text: 'Gender'
             },
             {
                 dataField: 'location',
@@ -325,9 +327,13 @@ deleteRow =(e,id)=>{
 
             // onclick to get more data
             const rowEvents = {
-                    onClick:(e,row)=>{
+                    onClick:(e,row,id)=>{
+
+                        console.log(this.getAmbGuarantor(id))
+
                         e.preventDefault()
-                        this.props.history.push(`/dashboard/ambassadorprofile/${row.id}`)
+                        // this.props.history.push(`/dashboard/guarantorProfile`)
+                        this.props.history.push(`/dashboard/guarantorprofile/${row.id}`)
                     }
             }
 
@@ -399,13 +405,13 @@ deleteRow =(e,id)=>{
                                         value={name} 
                                         onChange={this.handleChange} 
                                         className="form-control validate" />
-                                        <input 
+                                        {/* <input 
                                         type="hidden" 
                                         id="id" 
                                         name="id"
                                         value={id} 
                                         onChange={this.handleChange} 
-                                        className="form-control validate" />
+                                        className="form-control validate" /> */}
                                 </div>
                                 <ErrMsg className="text-danger">{this.validator.message('name', name, 'required')}</ErrMsg>
                         </div>
@@ -462,20 +468,20 @@ deleteRow =(e,id)=>{
                         </div>
 
                         <div className="md-form col-6 mb-3">
-                            <label data-error="wrong" data-success="right" htmlFor="guarantor">Guarantor</label>
+                            <label data-error="wrong" data-success="right" htmlFor="guarantor">Gender</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="basic-addon3"><i className="fas fa-user prefix grey-text" /></span>
                                     </div>
                                         <input 
                                         type="text" 
-                                        id="guarantor" 
-                                        name="guarantor" 
-                                        value={guarantor} 
+                                        id="gender" 
+                                        name="gender" 
+                                        value={gender} 
                                         onChange={this.handleChange} 
                                         className="form-control validate" />
                                 </div>
-                            <ErrMsg>{this.validator.message('guarantor', guarantor, 'required')}</ErrMsg>
+                            <ErrMsg>{this.validator.message('gender', gender, 'required')}</ErrMsg>
                         </div>
 
                         <div className="md-form col-6 mb-3">
@@ -520,7 +526,6 @@ const mapStateToProps = state=>({
     ambassadors:state.AmbassadorReducer.ambassadors,
     // errors:state.AmbassadorReducer.errors,
     isLoading:state.AmbassadorReducer.isLoading
-
 
 })
 

@@ -208,7 +208,7 @@ table.join {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 455px;
-  height: 500px;
+  height: auto;
   text-align: center;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
 
@@ -277,7 +277,7 @@ table.join {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  height: 570px;
+  height: auto;
   text-align: center;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
 }
@@ -288,7 +288,6 @@ table.join {
   padding: 8px;
   margin:13px 0px;
   width: 100%;
-  /* border: 1px solid #999; */
   outline: none;
 }
 .sign-up-form img
@@ -297,7 +296,12 @@ table.join {
   margin-top: -50px;
   border-radius: 50%;
 }
-.sign-up-form button
+/* .sign-up-form MyFormField
+{
+  width: 100%;
+} */
+
+/* .sign-up-form button
 {
   color: #fff;
   width: 70%;
@@ -308,7 +312,7 @@ table.join {
    border: none;
    outline: none;
    cursor: pointer;
-}
+} */
 .logout-btn
 {
   border:none;

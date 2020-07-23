@@ -35,7 +35,7 @@ export class AsideBar extends Component {
               </Link>
             </li> */}
             <li className="nav-item">
-              <NavLink to="/dashboard" className="nav-link activeStyle={{color:'red'}}">
+              <NavLink to="/" className="nav-link activeStyle={{color:'red'}}">
                 <i className="fa fa-user-plus nav-icon" />
                 <p>Contract Cleaning</p>
               </NavLink>

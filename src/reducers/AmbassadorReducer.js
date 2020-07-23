@@ -15,9 +15,9 @@ export default function(state= initialState,action)
         case GET_AMBASSADOR:
             return {
             ...state,
-            ambassadors:action.payload
-             
+            ambassadors:action.payload  
             }
+            
         case GET_ERRORS:
             return {
 

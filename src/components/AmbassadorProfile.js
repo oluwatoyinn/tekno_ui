@@ -10,11 +10,14 @@ export class Department extends Component {
        data:[],
        id:'',
        name:'',
-       address:'',
+       gender:'',
+       passport:'',
+       age:'',
+       phoneNumber:'',
+       homeAddress:'',
+       officeAddress:'',
        location:'',
-       email:'',
-       guarantor:'',
-       phone:''
+       ambassador_id:''
     }
   }
 
@@ -66,7 +69,7 @@ getAmb =()=> {
                                     <div className="col-md-4 border-right mt-3">
                                     <p className=" text-bold">ACCOUNT DETAILS</p>
                                       <div className="img-centre">
-                                        <img src="dist/img/chris.png" height={200} className="img-circle elevation-2" alt="User Image" />
+                                        <img src="dist/img/chris.png" height={200} className="img-circle elevation-2" alt="" />
                                       </div>
                                       <div className="inf2">
                                         <h6 className="text-muted">Christabel Ah-Dee-Ah</h6>
@@ -89,7 +92,7 @@ getAmb =()=> {
                                   <div className="col-md-4 border-right mt-3">
                                   <p className=" text-bold">GUARANTOR 1: <span>OLAREWAJU JAMES</span></p>
                                       <div className="img-centre">
-                                        <img src="dist/img/avatar.png" height={200} className="img-circle elevation-2" alt="User Image" />
+                                        <img src="dist/img/avatar.png" height={200} className="img-circle elevation-2" alt="" />
                                       </div>
                                       <div className="inf2">
                                         <h6 className="text-muted">Olarewaju James</h6>
@@ -107,7 +110,7 @@ getAmb =()=> {
                                   <div className="col-md-4 border-right mt-3">
                                     <p className="text text-bold">GUARANTOR 2: <span>VICTOR O AJAYI</span></p>
                                       <div className="img-centre">
-                                        <img src="dist/img/boss.jpg" height={200} className="img-circle elevation-2" alt="User Image" />
+                                        <img src="dist/img/boss.jpg" height={200} className="img-circle elevation-2" alt="" />
                                       </div>
                                       <div className="inf2">
                                         <h6 className="text-muted">Victor O Ajayi</h6>
@@ -131,9 +134,12 @@ getAmb =()=> {
                           
                         </div>
                       </div>
+                      
                     </div>
                   </div>
-                 
+                </div>
+                <div>
+                  hello
                 </div>
             </>
         )

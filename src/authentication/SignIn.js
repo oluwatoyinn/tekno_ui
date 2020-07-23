@@ -53,9 +53,9 @@ class Login extends Component {
         const {email,password}=this.state
         const {isLoading} = this.props
 
-        if(this.props.isAuthenticated) return <Redirect to="/dashboard" />
-
-        return isLoading ? <MyLoader msg="Please wait..."/> :  (
+        // if(this.props.isAuthenticated) return <Redirect to="/dashboard" />
+// isLoading ? <MyLoader msg="Please wait..."/> :  
+        return (
             <Fragment>
                 <div className="login_body">
                     <div className="login_form">
@@ -94,10 +94,10 @@ class Login extends Component {
                                     </div>
                                     <ErrMsg className="text-danger">{this.validator.message('password', password, 'required')}</ErrMsg>
                             </div>                                      
-                            <button type="submit" className="signup-btn" onClick={this.validateLogin}>Log in</button>
+                            <button type="submit" className="signup-btn" >Log in</button>
                             <hr />
                             <p className="or">OR</p> 
-                            <Link to="/dashboard"><button type="button" className="email-btn">Sign up with email</button></Link>
+                            <Link to="/"><button type="button" className="email-btn">Sign up with email</button></Link>
                             <p>Don't have an account? <Link to="/register">Sign Up</Link> </p>
                         </form>
                     </div>

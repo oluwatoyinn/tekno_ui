@@ -5,9 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import {BrowserRouter as Router} from 'react-router-dom'
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
-    <Router>
+    <Router >
         <App />
     </Router>
 , document.getElementById('root'));
