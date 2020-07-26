@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 
 
-const SignUp = () => {
+const HooksRegister = () => {
     // const history = useHistory();
     const initiaState= {
         name:'',
@@ -141,11 +141,11 @@ const SignUp = () => {
     )
 }
 
-SignUp.propTypes ={
+HooksRegister.propTypes ={
     register:PropTypes.func.isRequired
 }
 
-export default connect(null,{register})(SignUp)
+export default connect(null,{register})(HooksRegister)
 
 
 // export default SignUp;

@@ -13,7 +13,7 @@ import MyLoader from './HumanResources/MyLoader'
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
-import {getAmbGuarantor} from '../guarantors/GuarantorProfile'
+// import {getAmbGuarantor} from '../guarantors/GuarantorProfile'
 // import ConfirmButton from '../utils/Constant'
 
 

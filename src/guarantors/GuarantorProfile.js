@@ -105,7 +105,7 @@ class GuarantorProfile extends Component {
                 <div className="row">
                             <div className="col-md-12 clearfix mb-2">
                             <div className="float-right">
-                                    <Link to="/"> 
+                                    <Link to="/dashboard"> 
                                         <i className="fas fa-chevron-circle-left" ><span className="mt-3  pr-3"> Go Back</span> </i> 
                                     </Link>
                             </div> 

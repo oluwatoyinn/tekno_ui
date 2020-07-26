@@ -25,7 +25,7 @@ class NavBar extends Component {
    
     <button className="logout-btn">
       <li className="nav-item ">
-        <Link className="nav-link"  to="/" onClick={()=>this.props.logout()}><i className="fa fa-sign-out" />LogOut</Link>
+        <Link className="nav-link"  to="/login" onClick={()=>this.props.logout()}><i className="fa fa-sign-out" />LogOut</Link>
       </li>
     </button>
     

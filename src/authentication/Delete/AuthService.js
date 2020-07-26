@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import {getJwt} from './helpers/GetJwt'
-import axios from 'axios'
-import {regUrl} from '../utils/ApiCalls'
+// import React, { Component } from 'react'
+// import {getJwt} from './helpers/GetJwt'
+// import axios from 'axios'
+// import {regUrl} from '../utils/ApiCalls'
 
 class AuthService extends Component {
     constructor(props) {

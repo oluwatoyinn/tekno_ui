@@ -8,7 +8,7 @@ import Login from './authentication/Login';
 import Register from './authentication/Register'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import PrivateRoute from './routing/PrivateRoute'
-import ReduxToastr from 'react-redux-toastr'
+// import ReduxToastr from 'react-redux-toastr'
 import {LOGIN_SUCCESS} from './actions/types'
 import setAuthToken from './utils/setAuthToken'
 import {logout} from './actions/authAction'
@@ -36,23 +36,23 @@ function App() {
   return (
     <React.Fragment>
     <Provider store={store}>
-        <ReduxToastr
+        {/* <ReduxToastr
                   position="top-center"
                   transitionIn='bounceIn'
                   transitionOut='bounceOut'
                   progressBar
                   preventDuplicates
-          />
+          /> */}
       <div className="">
-        {/* <Switch>
+        <Switch>
           <Route exact path="/login" component={Login} />
             <Route exact path="/">
               <Redirect to="/login"/>
             </Route>
           <Route path="/register" component={Register} />
           <PrivateRoute path="/dashboard" component={DashBoard} />
-        </Switch> */}
-        <DashBoard />
+        </Switch>
+        {/* <DashBoard /> */}
       </div>
     </Provider>
     </React.Fragment>

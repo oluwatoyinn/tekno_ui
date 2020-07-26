@@ -21,7 +21,7 @@ class DisplayContent extends Component {
         return (
             <>
               <Switch>
-                    <Route exact path="/" component={AmbassadorCleaning} />
+                    <Route exact path="/dashboard" component={AmbassadorCleaning} />
                     <Route path="/dashboard/humanresources" component={HumanResources}/>
                     <Route path="/dashboard/account" component={Account}/>
                     <Route path="/dashboard/internalcontrol" component={InternalControl}/>

@@ -1,9 +1,6 @@
 import {axiosClient} from '../utils/configs'
 import * as type from './types'
 import setAuthToken from '../utils/setAuthToken'
-import {toastr} from 'react-redux-toastr'
-import {reactReduxToastrOptions} from '../utils/Constant'
-// import {useHistory} from 'react-router-dom'
 // import {toast} from 'react-toastify'
 // import jwt_decode from 'jwt-decode'
 const url ="/api/login"
@@ -31,9 +28,10 @@ export const login = (data) => async dispatch =>{
     } catch (error) {
         console.log(error)
     }
+
 }
 
-export const register =(data,history) =>async dispatch =>{
+export const register =(data,history) =>async dispatch =>{  
     const url = "api/register"
     const config ={
         headers:{
@@ -49,7 +47,6 @@ export const register =(data,history) =>async dispatch =>{
             payload:res.data 
         })
        history.push('/')
-       toastr.success('Registration', `${res.data.message}`,reactReduxToastrOptions("top-right"))
     } catch (error) {
         console.log(error) 
     } 
