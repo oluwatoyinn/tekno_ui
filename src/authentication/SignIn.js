@@ -1,135 +1,153 @@
-import React, { Component,Fragment } from 'react'
-import {Link,Redirect} from 'react-router-dom'
-// import { regUrl } from '../utils/ApiCalls'
+import React, { Component, Fragment } from 'react'
+import {Link} from 'react-router-dom'
 import SimpleReactValidator from 'simple-react-validator'
-import {ErrMsg} from '../utils/StyledConstant'
-import {connect} from 'react-redux'
+import {connect} from 'react-redux' 
+import {ErrMsg} from "../utils/StyledConstant"
+import {register} from '../actions/authAction'
 import PropTypes from 'prop-types';
-import MyLoader from '../components/HumanResources/MyLoader'
-// import axios from 'axios' 
-import {login} from '../actions/authAction'
+// import {RegistrationSchema} from '../utils/ValidationSchema'
+// import {Form, Field, ErrorMessage, Formik} from 'formik';
 
-class Login extends Component {
+// import {successToast} from '../utils/Constant'
+// import {ToastContainer} from 'react-toastify'
+// import {useHistory} from 'react-router-dom'
+
+
+class Register extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            name:'',
             email:'',
             password:'',
+            password_confirmation:'',
+
+            alert:null
         }
-          
       this.validator = new SimpleReactValidator();
     }
 
-    handleChange = event =>{
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+validateRegister =(event)=>{
+
+    event.preventDefault()
+    if(this.validator.allValid())
+    {
+        this.handleRegister()
+    }else
+    {
+        this.validator.showMessages()
+        this.forceUpdate()
     }
+}
 
-    
-    validateLogin =(event)=>{
-
-        event.preventDefault()
-        if(this.validator.allValid())
-        {
-            this.handleLogin()
-            // this.props.getLoginUser()
-        }else
-        {
-            this.validator.showMessages()
-            this.forceUpdate()
-        }
+handleRegister =()=>{
+    const data ={
+        name:this.state.name,
+        email:this.state.email,
+        password:this.state.password,
+        password_confirmation:this.state.password_confirmation
     }
+    this.props.register(data)
+    // this.props.history.push('/')
+}
 
-    handleLogin =()=>{
-        const data ={
-            email:this.state.email,
-            password:this.state.password
-        }
-        this.props.login(data)
-    }
-
+handleChange = event =>{
+    this.setState({
+        [event.target.name] :event.target.value
+    })
+}
     render() {
-        const {email,password}=this.state
-        const {isLoading} = this.props
 
-        // if(this.props.isAuthenticated) return <Redirect to="/dashboard" />
-// isLoading ? <MyLoader msg="Please wait..."/> :  
+        const {name,email,password,password_confirmation}=this.state
+
         return (
             <Fragment>
-                <div className="login_body">
-                    <div className="login_form">
-                        <img src="img2/chris.png" alt="" />
-                            <h2 className="text-uppercase header">Login to your account</h2>
-                        <form>                             
-                            <div className="register_form ">
-                                <label data-error="wrong" data-success="right" htmlFor="name">Email</label>
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text" id="basic-addon3"><i className="fas fa-envelope prefix grey-text" /></span>
-                                        </div>
-                                        <input 
-                                            type="email" 
-                                            id="email" 
-                                            name="email" 
-                                            value= {email}
-                                            onChange={this.handleChange} 
-                                            className="form-control validate" />
-                                    </div>
-                                    <ErrMsg className="text-danger">{this.validator.message('email', email, 'required')}</ErrMsg>
-                            </div>
-                            <div className="register_form ">
-                                <label data-error="wrong" data-success="right" htmlFor="name">Password</label>
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text" id="basic-addon3"><i className="fa fa-key prefix grey-text" /></span>
-                                        </div>
-                                        <input 
-                                            type="password" 
-                                            id="password" 
-                                            name="password"
-                                            value= {password}
-                                            onChange={this.handleChange} 
-                                            className="form-control validate" />
-                                    </div>
-                                    <ErrMsg className="text-danger">{this.validator.message('password', password, 'required')}</ErrMsg>
-                            </div>                                      
-                            <button type="submit" className="signup-btn" >Log in</button>
-                            <hr />
-                            <p className="or">OR</p> 
-                            <Link to="/"><button type="button" className="email-btn">Sign up with email</button></Link>
-                            <p>Don't have an account? <Link to="/register">Sign Up</Link> </p>
-                        </form>
-                    </div>
-                 </div>
-
-                </Fragment>
             
+                        <div className="login_body">
+                            <div className="sign-up-form">
+                                <img src="img2/chris.png" alt="" />
+                                    <h2 className="text-uppercase header">register an account</h2>
+                                    <form >                            
+                                    <div className="register_form ">
+                                        <label data-error="wrong" data-success="right" htmlFor="name">Name</label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="basic-addon3"><i className="fas fa-user prefix grey-text" /></span>
+                                                </div>
+                                                <input 
+                                                    type="text" 
+                                                    id="name" 
+                                                    name="name"
+                                                    onChange={this.handleChange} 
+                                                    className="form-control validate" />
+                                            </div>
+                                        <ErrMsg className="text-danger">{this.validator.message('name', name, 'required')}</ErrMsg>
+                                    </div>  
+                                    <div className="register_form ">
+                                        <label data-error="wrong" data-success="right" htmlFor="name">Email</label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="basic-addon3"><i className="fas fa-envelope prefix grey-text" /></span>
+                                                </div>
+                                                <input 
+                                                    type="email" 
+                                                    id="email" 
+                                                    name="email"
+                                                    onChange={this.handleChange} 
+                                                    className="form-control validate" />
+                                            </div>
+                                        <ErrMsg className="text-danger">{this.validator.message('email', email, 'required')}</ErrMsg>
+                                    </div>
+                                    <div className="register_form">
+                                        <label data-error="wrong" data-success="right" htmlFor="name">Password</label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="basic-addon3"><i className="fa fa-key prefix grey-text" /></span>
+                                                </div>
+                                                <input 
+                                                    type="password" 
+                                                    id="password" 
+                                                    name="password"
+                                                    onChange={this.handleChange} 
+                                                    className="form-control validate"
+                                                    />
+                                            </div>
+                                        <ErrMsg className="text-danger">{this.validator.message('password', password, 'required')}</ErrMsg>
+                                    </div>
+                                    <div className="register_form">
+                                        <label data-error="wrong" data-success="right" htmlFor="name">Confirm Password</label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="basic-addon3"><i className="fa fa-check prefix grey-text" /></span>
+                                                </div>
+                                                <input 
+                                                    type="password" 
+                                                    id="password_confirmation" 
+                                                    name="password_confirmation"
+                                                    onChange={this.handleChange}
+                                                    className="form-control validate"
+                                                    />
+                                            </div>
+                                        <ErrMsg className="text-danger">{this.validator.message('password_confirmation', password_confirmation, 'required')}</ErrMsg>
+                                    </div>                                  
+                                    <button type="submit" className="signup-btn" onClick={this.validateRegister}>Register</button> 
+                                    {/* <ToastContainer autoClose={5000} pauseOnHover draggable/> */}
+                                    <p>Already have an account? <Link to="/">Sign in</Link> </p>
+                                
+                                </form>
+                            </div>
+                        </div>
+              
+                    {this.state.alert}
+            </Fragment>
         )
     }
 }
- 
-//  Login.propTypes ={
-//      LoginAction: PropTypes.func.isRequired
-//  }
 
-//  Login.contextType ={
-//      router:PropTypes.object.isRequired
-//  }
 
-Login.propTypes = {
-    isAuthenticated:PropTypes.bool.isRequired,
-    isLoading:PropTypes.bool.isRequired
+Register.propTypes ={
+    register:PropTypes.func.isRequired
 }
-
-const mapStateToProps = state =>({
-    isAuthenticated:state.authReducer.isAuthenticated,
-    isLoading:state.authReducer.isLoading
-})    
-export default connect(mapStateToProps,{login})(Login);
-
-// const mapStateToProps = state => ({
-//     getLoginUser:state.getLoginUser
-//   })
   
-//   export default connect(mapStateToProps,{getLoginUser})(Login)
+  export default connect(null,{register})(Register)
+

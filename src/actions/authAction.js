@@ -47,6 +47,7 @@ export const register =(data,history) =>async dispatch =>{
             payload:res.data 
         })
        history.push('/')
+    //    dispatch(type.SUCCESS('Registration Successful'))
     } catch (error) {
         console.log(error) 
     } 

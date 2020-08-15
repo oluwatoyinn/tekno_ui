@@ -100,6 +100,7 @@ class GuarantorProfile extends Component {
             cursor:'pointer',
           };
 
+
         return isLoading ? <MyLoader msg="Please wait..."/> : (
             <React.Fragment>
                 <div className="row">

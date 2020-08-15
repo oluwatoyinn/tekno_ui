@@ -367,6 +367,7 @@ deleteRow =(id)=>{
             location,
             isEdit
         } = this.state
+        
         return (
             <>
             <div className="row shadow-md">

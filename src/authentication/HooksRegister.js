@@ -1,17 +1,14 @@
 import React, {useState, Fragment, useEffect} from 'react'
 import {Form, FormikProps, Formik,Field } from 'formik';
 import {RegistrationSchema} from '../utils/ValidationSchema'
-// import {MyFormField} from '../utils/FormikCustom'
 import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux' 
 import {register} from '../actions/authAction'
 import PropTypes from 'prop-types';
 
 
-
-
 const HooksRegister = () => {
-    // const history = useHistory();
+
     const initiaState= {
         name:'',
         email:'',
@@ -19,23 +16,28 @@ const HooksRegister = () => {
         password_confirmation:''
     }
     const [user, setUser] = useState({initiaState})
-    // const [submitted, setSubmitted] = useState(false)
-
+    
     function handleChange(e) {
         const {name, value} = e.target;
         setUser(user => ({ ...user, [name]: value }));
     }
 
-    const handleRegister = (e) =>{
+    // const handleRegister = (e) =>{
+    //     e.preventDefault()
+    //     const data ={
+    //         name:user.name,
+    //         email:user.email,
+    //         password:user.password,
+    //         password_confirmation:user.password_confirmation
+    //     }
+    //     this.register(data)
+    // //    this.props.history.push('/')
+    // }
+
+    const handleRegister =(e) =>{
         e.preventDefault()
-        const data ={
-            name:user.name,
-            email:user.email,
-            password:user.password,
-            password_confirmation:user.password_confirmation
-        }
-        this.register(data)
-    //    this.props.history.push('/')
+
+        dispatch()
     }
 
     const {name,email, password_confirmation, password} = user
