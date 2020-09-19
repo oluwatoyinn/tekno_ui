@@ -15,6 +15,9 @@ const httpTimeout = '50000'
 
 export const axiosClient = axios.create({
     baseURL:baseURL,
-    timeout:httpTimeout
+    timeout:httpTimeout,
+    headers: {
+        "Content-Type": "application/json"
+      }
     // localUrl:localUrl
 })

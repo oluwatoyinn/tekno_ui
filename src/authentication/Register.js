@@ -21,7 +21,7 @@ return (
         }}
         onSubmit={async(data, {setSubmitting})=>{
             setSubmitting(true);
-            register(data, history)  
+            register(data, history)   
         }}
         validationSchema={RegistrationSchema}
         >
@@ -82,5 +82,5 @@ Register.propTypes ={
     register:PropTypes.func.isRequired
 }
   
-  export default connect(null,{register})(Register)
+export default connect(null,{register})(Register)
 

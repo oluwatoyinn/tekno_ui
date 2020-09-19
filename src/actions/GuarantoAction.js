@@ -14,5 +14,4 @@ export const getGuarantor =()=> async dispatch =>{
         payload:res.data.data
     })
     // dispatch({type:GET_STOPLOADING})
-
 }

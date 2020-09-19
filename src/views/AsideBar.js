@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React, {useEffect} from 'react'
 import {Link,NavLink} from "react-router-dom"
+// import {loadTree} from '../utils/TreeHelper'
 
-export class AsideBar extends Component {
-    render() {
-        return (
-            <>
-     {/* Main Sidebar Container */}
+export default function Asidebar() {
+    
+  useEffect(() => {
+    const trees = window.$ ('[data-widget="treeview"]');
+    // trees.treeview('init');
+    }, []);
+
+  return (
+    <>
+    {/* Main Sidebar Container */}
 <aside className="main-sidebar sidebar-dark-primary elevation-4">
   {/* Brand Logo */}
   <Link to="/dashboard" className="brand-link">
@@ -35,21 +41,21 @@ export class AsideBar extends Component {
               </Link>
             </li> */}
             <li className="nav-item">
-              <NavLink to="/dashboard" className="nav-link activeStyle={{color:'red'}}">
+              <NavLink to="/dashboard" className="nav-link" activeStyle={{color:'red'}}>
                 <i className="fa fa-user-plus nav-icon" />
-                <p>Contract Cleaning</p>
+                <p>Ambassadors</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/dashboard/humanresources" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/employees" className="nav-link" activeStyle={{color:'red'}}>
                 <i className="fa fa-users nav-icon" />
-                <p>Human Resources</p>
+                <p>Employees</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/dashboard/account" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/salary" className="nav-link" activeStyle={{color:'red'}}>
               <i className="fa fa-calculator nav-icon" />
-                <p>Accounts</p>
+                <p>Salaries</p>
               </NavLink>
             </li>
             <li className="nav-item">
@@ -59,15 +65,15 @@ export class AsideBar extends Component {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/dashboard/internalcontrol" className="nav-link" activeStyle={{color:'red'}}>
+              <NavLink to="/dashboard/leave" className="nav-link" activeStyle={{color:'red'}}>
               <i className=" nav-icon fas fa-cog"></i>
-                <p>Internal Control</p>
+                <p>Leave</p>
               </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/dashboard/setting" className="nav-link">
+              <Link to="/dashboard/department" className="nav-link">
               <i className=" nav-icon fas fa-cog"></i>
-                <p>Settings</p>
+                <p>Department</p>
               </Link>
             </li>
           </ul>
@@ -80,9 +86,8 @@ export class AsideBar extends Component {
   {/* /.sidebar */}
 </aside>
   
-            </>
-        )
-    }
+      
+    </>
+  )
 }
 
-export default AsideBar

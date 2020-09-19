@@ -91,7 +91,7 @@ handleSubmit=()=>{
             alert:displayAlert()
         })
         this.props.getAmbassador()
-    })   
+    }) 
 }
 
 hideAlert = ()=> {
@@ -145,7 +145,6 @@ updateSubmit = (e)=>{
         gender:this.state.gender,
         location:this.state.location
     }
- 
     axios.put(`${url}/${this.state.id}`, newAmbassador)
     .then(res=>{
         const updateAlert = () =>(
@@ -160,13 +159,11 @@ updateSubmit = (e)=>{
              modal:false,
             alert:updateAlert()
         })
-    this.props.getAmbassador()
-    this.resetFormData()
+        this.props.getAmbassador()
+        this.resetFormData()
     })
    
 }
-
-
 
 getSingleAmbassador =(id)=>{
     this.setState({
@@ -257,8 +254,6 @@ getAmbGuarantor =(id) =>{
             isEdit
         } = this.state
 
-       
-
         const columns = [
             {
               dataField: 'id',
@@ -318,8 +313,6 @@ getAmbGuarantor =(id) =>{
                   }
             },
           ];
-
- 
 
             const rowStyle = { 
                 cursor:'pointer',

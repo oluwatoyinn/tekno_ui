@@ -4,11 +4,10 @@ import DashBoard from './views/DashBoard';
 import store from './store'
 import {Provider} from 'react-redux'
 import Login from './authentication/Login';
-// import SignUp from './authentication/SignUp'
 import Register from './authentication/Register'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import PrivateRoute from './routing/PrivateRoute'
-// import ReduxToastr from 'react-redux-toastr'
+import ReduxToastr from 'react-redux-toastr'
 import {LOGIN_SUCCESS} from './actions/types'
 import setAuthToken from './utils/setAuthToken'
 import {logout} from './actions/authAction'
@@ -36,13 +35,13 @@ function App() {
   return (
     <React.Fragment>
     <Provider store={store}>
-        {/* <ReduxToastr
+        <ReduxToastr
                   position="top-center"
                   transitionIn='bounceIn'
                   transitionOut='bounceOut'
                   progressBar
                   preventDuplicates
-          /> */}
+          />
       <div className="">
         <Switch>
           <Route exact path="/login" component={Login} />
@@ -54,7 +53,7 @@ function App() {
         </Switch>
         {/* <DashBoard /> */}
       </div>
-    </Provider>
+    </Provider> 
     </React.Fragment>
     
   );

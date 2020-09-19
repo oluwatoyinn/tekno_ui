@@ -20,7 +20,7 @@ export const CustomFormInput = ({labelFor,label, ...props})=>{
                     {meta.error&&meta.error?(
                             <div className="invalid-feedback">
                                 {meta.error}
-                            </div>
+                            </div> 
                         ) : null
                     }
                 </div>
@@ -28,3 +28,36 @@ export const CustomFormInput = ({labelFor,label, ...props})=>{
         </Fragment>
     )
 }
+
+export const CustomClientForm =({labelFor,label,...props})=>{
+    return(
+        <Fragment>
+             <div className="col-12">
+                <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label>
+                        <input className="clientInput"
+                         {...props}
+                        />
+                   
+            </div>
+        </Fragment>
+    )
+}
+
+export const CustomClassEmployeeForm =({labelFor,label,...props})=>{
+    // const [field,meta] = useField(props)
+    return(
+        <Fragment>
+             <div className=" col-6 mb-3 ">
+                <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label>
+                    <div className="input-group mb-3" >
+
+                        <input className="empInput"
+                        {...props}
+                        />
+
+                </div>
+            </div>
+        </Fragment>
+    )
+}
+
