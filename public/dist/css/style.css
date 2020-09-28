@@ -1,0 +1,138 @@
+@import url("https://fonts.google.com/specimen/Poppins?selection.family=Poppins:wght@200;300;400;500;600;700&display=wap");
+@import url("https://fonts.google.com/specimen/Sacramento");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, input{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* .container-fluid{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow: hidden; */
+    /* background-image: url(../img/tekno.png); */
+    /* background-image: linear-gradient(to right, #4258D0 , #C950C1); */
+/* } */
+
+.form_wrap
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow: hidden;
+    /* background-image: url(../img/tekno.png); */
+    background-image: linear-gradient(to right, #4258D0 , #C950C1);
+}
+
+.forms-container
+{
+    /* background: #f5fcfc; */
+    background: #E9ECEF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width:600px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+  }
+
+.sign_in_form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title
+{
+   margin-top: 30px;
+   font-size: 2.2em;
+   color: #444;
+   margin-bottom: 10px; 
+   font-family: Sacramento;
+}
+
+.input-field
+{
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color: #f0f0f0; 
+    margin: 13px 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-rows:85%,15% ; */
+    padding: 0 .4rem;
+}
+.fas{
+    align-items: flex-start;
+}
+
+.input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    font-size: 1.1rem;
+}
+
+.input-field input{
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.input-field input::placeholder
+{
+    color: #aaa;
+    font-weight: 500;
+}
+
+.btn-log
+{
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: .5s;
+}
+
+.btn-log:hover{
+    background-color: #4d84e2;
+    color: #333;
+}
+
+.social-text
+{
+    padding: .7rem 0;
+    font-size: 1rem;
+}
+
+.error
+{
+   text-align: justify;
+}
+/* ends here */
+

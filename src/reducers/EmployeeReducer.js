@@ -1,4 +1,5 @@
-import {GET_EMPLOYEES,POST_EMPLOYEES} from "../actions/types"
+import {GET_EMPLOYEES,POST_EMPLOYEES, DELETE_EMPLOYEES,UPDATE_EMPLOYEES} from "../actions/types"
+// import { returnErrors } from "../actions/errorAction"
 
 const initialState={
     employees:[],
@@ -20,6 +21,16 @@ export default function (state=initialState,action)
             return{
                 ...state,
             employees:action.payload
+            }
+        case DELETE_EMPLOYEES:
+            return{
+                ...state,
+                employees:action.payload
+            }
+        case UPDATE_EMPLOYEES:
+            return{
+                ...state,
+                employees:action.payload
             }
         default:
             return state;

@@ -1,6 +1,7 @@
-/* *{
-  background-color: #f5fcfc;
-} */
+@import url("https://fonts.google.com/specimen/Satisfy#standard-styles");
+@import url("https://fonts.google.com/specimen/Great+Vibes");
+@import url("https://fonts.google.com/specimen/Sacramento");
+
 .App {
   text-align: center;
 }
@@ -195,9 +196,11 @@ table.join {
 
 .header
 {
-  font-size: 30px;
-  color: #1c8adb;
-
+   font-size: 2.2em;
+   color: #444;
+   margin-bottom: 10px;
+   /* font-family: 'Satisfy'; */
+   font-family: 'Sacramento';
 }
 
 .login_form
@@ -211,8 +214,8 @@ table.join {
   height: auto;
   text-align: center;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
-
 }
+
 .login_form h2{
   color: #1c8adb;
   margin-bottom: 30px;
@@ -239,13 +242,30 @@ table.join {
 }
 .signup-btn
 {
- background-color: #1c8adb;  
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: .5s;
+}
+
+.signup-btn:hover
+{
+    background-color: #4d84e2;
+    color: #333;
 }
 .email-btn
 {
   background-color: #21afde;
 }
-.sign-up-form a
+.sign-up-form 
 {
   text-decoration: none;
 }
@@ -261,6 +281,7 @@ table.join {
   width: 30px;
   margin: -29px auto 10px;
 }
+
 .login_form img
 {
   width: 50px;
@@ -271,7 +292,8 @@ table.join {
 /* SIGN UP  */
 .sign-up-form
 {
-  background: #f5fcfc;
+  /* background: #f5fcfc; */
+  background: #E9ECEF;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -280,6 +302,20 @@ table.join {
   height: auto;
   text-align: center;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+  border-radius: 20px; 
+}
+
+.input-group input
+{
+  border-radius: 10px;
+}
+
+.input-group i
+{
+  text-align: center;
+  line-height: 20px;
+  color: #acacac;
+  font-size: 1.1rem;
 }
 
 .register_form
@@ -290,29 +326,22 @@ table.join {
   width: 100%;
   outline: none;
 }
+
+.register_form label
+{
+  text-align: center;
+  line-height: 20px;
+  color: #acacac;
+  font-size: 1.1rem;
+}
+
 .sign-up-form img
 {
-  width: 50px;
+  width: 150px;
   margin-top: -50px;
   border-radius: 50%;
 }
-/* .sign-up-form MyFormField
-{
-  width: 100%;
-} */
 
-/* .sign-up-form button
-{
-  color: #fff;
-  width: 70%;
-  padding: 10px;
-   border-radius: 20px;
-   font-size: 15px;
-   margin: 10px 0;
-   border: none;
-   outline: none;
-   cursor: pointer;
-} */
 .logout-btn
 {
   border:none;
@@ -334,17 +363,6 @@ table.join {
    cursor: pointer;
 }
 
-.clientInput
-{
-  padding: 5px;
-  margin:3px;
-  width:100%
-}
-textarea,
-select {
-  width: 100%;
-  margin-left: 5px;
-}
 legend{
   font-weight: bold;
 }
@@ -356,9 +374,24 @@ legend{
   margin:13px 0px; */
   width: 100%;
   outline: none;
-
 }
 
+/* NEW SIGN-IN AND SIGN-UP PAGE */
 
-  
+.login_body
+{
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #fff;
+      overflow: hidden;
+      /* background-image: url(../img/tekno.png); */
+      background-image: linear-gradient(to right, #4258D0 , #C950C1);
+}
+
+/* cLIENT MODAL */
+.state-h2
+{
+  font-size: 20px;
+}
 

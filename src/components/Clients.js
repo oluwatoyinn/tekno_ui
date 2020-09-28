@@ -250,7 +250,7 @@ updateSubmit =(e)=>{
         ]
         return (
             <React.Fragment>
-                        <div className="row">
+                    <div className="row">
                         <div className="col-md-8">
                             <h5 className="text-left">Client Details</h5>
                         </div>

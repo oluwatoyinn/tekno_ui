@@ -30,12 +30,13 @@ return (
             <Form > 
                 <div className="login_body">
                     <div className="sign-up-form">
-                        <img src="img2/chris.png" alt="" />
-                            <h2 className="text-uppercase header">register an account</h2>
+                        <img src="img2/tekno.png" alt="" />
+                            <h2 className="header">Register </h2>
 
                             <CustomFormInput
                                 label="Name"
                                 labelFor="name"
+                                regIcons="fas fa-user"
                                 name="name"
                                 type="text"
                             />
@@ -43,6 +44,7 @@ return (
                              <CustomFormInput
                                 label="Email"
                                 labelFor="email"
+                                regIcons="fas fa-envelope"
                                 name="email"
                                 type="email"
                             />
@@ -50,6 +52,7 @@ return (
                            <CustomFormInput
                                 label="Password"
                                 labelFor="password"
+                                regIcons="fas fa-lock"
                                 name="password"
                                 type="password"
                             />
@@ -57,6 +60,7 @@ return (
                             <CustomFormInput
                                 label="Confirm Password"
                                 labelFor="name"
+                                regIcons="fas fa-check-double"
                                 name="password_confirmation"
                                 type="password"
                             />  

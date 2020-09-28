@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import {useField} from 'formik'
 
-export const CustomFormInput = ({labelFor,label, ...props})=>{
+export const CustomFormInput = ({labelFor,label,regIcons, ...props})=>{
     const [field,meta] = useField(props)
     return (
         <Fragment>
@@ -9,7 +9,7 @@ export const CustomFormInput = ({labelFor,label, ...props})=>{
                 <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label>
                 <div className="input-group">
                     <div className="input-group-prepend">
-                        <span className="input-group-text" id="basic-addon3"><i className="fas fa-envelope prefix grey-text" /></span>
+                        <span className="input-group-text" id="basic-addon3"><i className={regIcons} /></span>
                     </div>
                     <input
                     {...field}
@@ -29,19 +29,68 @@ export const CustomFormInput = ({labelFor,label, ...props})=>{
     )
 }
 
-export const CustomClientForm =({labelFor,label,...props})=>{
+export const CustomClientForm =({labelFor,label,iconsFor,...props})=>{
     return(
         <Fragment>
              <div className="col-12">
-                <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label>
-                        <input className="clientInput"
+                <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label> 
+                    <input 
                          {...props}
-                        />
+                    />
+                
+                        
                    
             </div>
         </Fragment>
     )
 }
+
+export const CustomFormInput2 = ({iconFor, ...props})=>{
+    const [field,meta] = useField(props)
+    return (
+        <Fragment>
+                <div className="input-field form-group">
+                    <i className={iconFor}/>
+                    <input
+                        {...field}
+                        {...props}
+                        className={'form-control' + (meta.error && meta.touched ? ' is-invalid' : '')} 
+                    />
+                    {/* <ErrorMessage name={name} component="div" className="invalid-feedback" /> */}
+                    {meta.error&&meta.error?(
+                            <div className="invalid-feedback">
+                                {meta.error}
+                            </div> 
+                        ) : null
+                    }
+                </div>
+        </Fragment>
+    )
+}
+
+export const CustomLoginForm=({iconFor, ...props})=>{
+    const [field,meta] = useField(props)
+    return(
+        <Fragment>
+            <div className="form-group input-field">
+                <i className={iconFor} />
+                <input 
+                {...field}
+                {...props} 
+                className={'form-control' + (meta.error && meta.touched ? ' is-invalid' : '')} 
+                />
+                 {meta.error&&meta.error?(
+                        <div className="invalid-feedback">
+                            {meta.error}
+                        </div> 
+                    ) : null
+                 }
+            </div>
+       </Fragment>
+    )
+   
+}
+
 
 export const CustomClassEmployeeForm =({labelFor,label,...props})=>{
     // const [field,meta] = useField(props)
@@ -50,7 +99,6 @@ export const CustomClassEmployeeForm =({labelFor,label,...props})=>{
              <div className=" col-6 mb-3 ">
                 <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label>
                     <div className="input-group mb-3" >
-
                         <input className="empInput"
                         {...props}
                         />

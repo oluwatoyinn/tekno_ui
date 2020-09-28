@@ -19,10 +19,10 @@ export const RegistrationSchema = Yup.object().shape({
 export const LoginSchema = Yup.object().shape({
     email:Yup.string()
         .email("Invalid email address")
-        .required("Enter a valid email address"),
+        .required("required"),
     password:Yup.string()
-        .min(5, "must be at least 5 character")
-        .required("Password is required")
+        .min(5, "too short")
+        .required("required")
 })
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
