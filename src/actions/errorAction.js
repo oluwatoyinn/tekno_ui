@@ -5,7 +5,7 @@ import {GET_ERRORS, CLEAR_ERRORS} from "./types"
 //   }
 
   //RETUNR ERRORS
-  export const returnErrors = (msg, status) => {
+export const returnErrors = (msg, status) => {
     return {
         type: GET_ERRORS,
         payload: { msg, status }

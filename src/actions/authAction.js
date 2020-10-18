@@ -46,7 +46,7 @@ export const register =(data,history) =>async dispatch =>{
             payload:res.data 
         })
        history.push('/')
-       toastr.success('Registration', `${res.data.message}`,reactReduxToastr("top-right"))
+    //    toastr.success('Registration', `${res.data.message}`,reactReduxToastr("top-right"))
     } catch (error) {
         console.log(error) 
     } 

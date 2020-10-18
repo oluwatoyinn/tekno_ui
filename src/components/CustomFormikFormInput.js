@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import {useField} from 'formik'
+import TextField from '@material-ui/core/TextField'
 
 export const CustomFormInput = ({labelFor,label,regIcons, ...props})=>{
     const [field,meta] = useField(props)
@@ -29,6 +30,25 @@ export const CustomFormInput = ({labelFor,label,regIcons, ...props})=>{
     )
 }
 
+export const CustomMaterialUiForm = ({...props})=>{
+    const [field,meta] = useField(props)
+    return (
+        <Fragment>
+             <TextField
+               {...field}
+               {...props} 
+            //    className={'form-control' + (meta.error && meta.touched ? ' is-invalid' : '')} 
+            />
+             {meta.error&&meta.error?(
+                    <div className="invalid-feedback">
+                        {meta.error}
+                    </div> 
+                ) : null
+                    }
+        </Fragment>
+    )
+}
+
 export const CustomClientForm =({labelFor,label,iconsFor,...props})=>{
     return(
         <Fragment>
@@ -36,10 +56,7 @@ export const CustomClientForm =({labelFor,label,iconsFor,...props})=>{
                 <label data-error="wrong" data-success="right" htmlFor={labelFor}>{label}</label> 
                     <input 
                          {...props}
-                    />
-                
-                        
-                   
+                    />       
             </div>
         </Fragment>
     )
@@ -68,28 +85,7 @@ export const CustomFormInput2 = ({iconFor, ...props})=>{
     )
 }
 
-export const CustomLoginForm=({iconFor, ...props})=>{
-    const [field,meta] = useField(props)
-    return(
-        <Fragment>
-            <div className="form-group input-field">
-                <i className={iconFor} />
-                <input 
-                {...field}
-                {...props} 
-                className={'form-control' + (meta.error && meta.touched ? ' is-invalid' : '')} 
-                />
-                 {meta.error&&meta.error?(
-                        <div className="invalid-feedback">
-                            {meta.error}
-                        </div> 
-                    ) : null
-                 }
-            </div>
-       </Fragment>
-    )
-   
-}
+ 
 
 
 export const CustomClassEmployeeForm =({labelFor,label,...props})=>{

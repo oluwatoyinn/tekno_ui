@@ -1,26 +1,15 @@
-import React, {Fragment,useState} from 'react'
+import React, {Fragment} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {login} from '../actions/authAction'
 import {connect} from 'react-redux'
 import MyLoader from '../components/HumanResources/MyLoader'
-import {CustomFormInput,CustomLoginForm, CustomFormInput2} from '../components/CustomFormikFormInput'
-import {Formik,Form,useField} from 'formik'
+import {CustomFormInput2} from '../components/CustomFormikFormInput'
+import {Formik,Form} from 'formik'
 import PropTypes from 'prop-types';
 import {LoginSchema} from '../utils/ValidationSchema'
 
 
 const Login = ({login, isAuthenticated,isLoading}) => {
-
-    // const initialState={
-    //     email:'',
-    //     password:''
-    // }
-    // const [user, setUser] = useState(initialState)
-
-    // const handleChange=(e) => {
-    //     const {name, value} = e.target;
-    //     setUser(user => ({ ...user, [name]: value }));
-    // }
 
     if(isAuthenticated) return <Redirect to="/dashboard" />
 
@@ -88,7 +77,7 @@ const Login = ({login, isAuthenticated,isLoading}) => {
                                     
                                             <input type="submit" defaultValue="login" className="btn-log btn-solid" />
                                             <p className="social-text ">Don't have an account? {"   "} <Link to="/register">Register</Link></p>
-                                        </div>
+                                        </div> 
                                         {/* <pre>{JSON.stringify(values,null,2)}</pre>
                                         <pre>{JSON.stringify(errors,null,2)}</pre>  */}
                                     </div>

@@ -5,6 +5,7 @@ import store from './store'
 import {Provider} from 'react-redux'
 import Login from './authentication/Login';
 import Register from './authentication/Register'
+import HooksRegister from './authentication/HooksRegister'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import PrivateRoute from './routing/PrivateRoute'
 import ReduxToastr from 'react-redux-toastr'
@@ -48,7 +49,7 @@ function App() {
             <Route exact path="/">
               <Redirect to="/login"/>
             </Route>
-          <Route path="/register" component={Register} />
+          <Route path="/register" component={HooksRegister} />
           <PrivateRoute path="/dashboard" component={DashBoard} />
         </Switch>
         {/* <DashBoard /> */}

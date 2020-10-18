@@ -1,19 +1,31 @@
 import React,{useEffect, useState} from 'react'
 import {connect} from "react-redux"
-import {getClients} from '../../actions/ClientAction'
+import {getClients,postClient,deleteClient,updateClient} from '../../actions/ClientAction'
 import { Button,Modal,ModalHeader,ModalBody, ModalFooter } from 'reactstrap';
-// import {CustomClientForm} from "../components/CustomFormikFormInput"
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
-// import SimpleReactValidator from 'simple-react-validator' 
 import {CustomClientForm} from '../../components/CustomFormikFormInput'
 import axios from 'axios'
 
-const Hookclient=(props) =>{
+const url= "https://tkl-api.herokuapp.com/api/clients"
 
+const HookClient=(props) =>{
 
+    const initialState ={
+        companyName:'',
+        address:'',
+        state:'',
+        city:'',
+        website:'',
+        email:'',
+        contactPerson:'',
+        contactNo:'',
+        contractValue:''
+    }
+    const [client, setClient] = useState(initialState)
     const [modal, setModal] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
 
     const toggle=()=>{
         setModal(!modal)
@@ -21,6 +33,61 @@ const Hookclient=(props) =>{
     useEffect(()=>{
         props.getClients()
     })
+
+    // Handle Input Change
+    const handleChange =(e)=>{
+        const {name, value} = e.target
+        setClient(client=>({...client,[name]:value }))
+    }
+
+    // Create a new client start from here 
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+
+        props.postClient(client)
+        toggle()
+        props.getClients()
+    }
+
+    // remove/deleta a client start from here 
+    const handleDelete =(id)=>{
+        props.deleteClient(id)
+    }
+
+    // update client start from here 
+    const toggleUpdate =(id) =>{
+        setIsEdit(true)
+        toggle()
+        getSingleClient(id)
+    }
+
+    const getSingleClient =(id)=>{
+        setIsEdit(true)
+        axios.get(`${url}/${id}`)
+        .then(res=>{ 
+            setClient({
+                id:res.data.data.id,
+                companyName:res.data.data.companyName,
+                address:res.data.data.address,
+                state:res.data.data.state,
+                city:res.data.data.city,
+                website:res.data.data.website,
+                email:res.data.data.email,
+                contactPerson:res.data.data.contactPerson,
+                contactNo:res.data.data.contactNo,
+                contractValue:res.data.data.contractValue
+            })
+        })
+    }
+
+    const handleUpdate =(e)=>{
+        e.preventDefault()
+
+        props.updateClient(client)
+        toggle()
+        props.getClients()
+    }
+    // update client ends here 
 
     const closeBtn = <button className="close" onClick={toggle}>&times;</button>
     const {clients} = props
@@ -87,10 +154,10 @@ const Hookclient=(props) =>{
             text: 'Action',
             formatter: (rowContent, row) => {
                 // console.log(row)
-                return ( 
+                return (  
                     <div className="d-flex">
-                    <button className="edit" ><i className="fas fa-edit text-success"></i></button>
-                    <button className="del" ><i className="far fa-trash-alt bg-danger"></i></button> 
+                    <button className="edit" onClick={()=>toggleUpdate(row.id)} ><i className="fas fa-edit text-success"></i></button>
+                    <button className="del" onClick={()=>handleDelete(row.id)} ><i className="far fa-trash-alt bg-danger"></i></button> 
                     </div>  
                 )
               }
@@ -155,8 +222,8 @@ const Hookclient=(props) =>{
                                                     labelFor="companyName"
                                                     name="companyName"
                                                     type="text"
-                                                    // value={this.state.companyName}
-                                                    // onChange={this.handleChange}
+                                                    value={client.companyName}
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="col-3 ">
@@ -165,13 +232,13 @@ const Hookclient=(props) =>{
                                                     labelFor="city"
                                                     name="city"
                                                     type="text"
-                                                    // value={this.state.city}
-                                                    // onChange={this.handleChange}
+                                                    value={client.city}
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="col-3">
                                                 <h2 className="state-h2">State</h2>
-                                                    <select name="state" id="state" className="w-100">
+                                                    <select name="state" id="state" className="w-100" value={client.state} onChange={handleChange}>
                                                         <option value="" selected="selected">- Select -</option>
                                                         <option value="Abuja FCT">Abuja FCT</option>
                                                         <option value="Abia">Abia</option>
@@ -221,8 +288,8 @@ const Hookclient=(props) =>{
                                                     labelFor="website"
                                                     name="website"
                                                     type="text"
-                                                    // value={this.state.website}
-                                                    // onChange={this.handleChange}
+                                                    value={client.website}
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="col-6"> 
@@ -231,15 +298,15 @@ const Hookclient=(props) =>{
                                                     labelFor="email"
                                                     name="email"
                                                     type="email"
-                                                    // value={this.state.email}
-                                                    // onChange={this.handleChange}
+                                                    value={client.email}
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="col-12 ">
                                                 <legend>Address</legend>
                                                     <textarea className="w-100 mb-2" name="address" 
-                                                        // value={this.state.address} 
-                                                        // onChange={this.handleChange} 
+                                                        value={client.address} 
+                                                        onChange={handleChange} 
                                                         id="nMA" 
                                                         cols="10" rows="2"
                                                     />
@@ -251,28 +318,30 @@ const Hookclient=(props) =>{
                                                 labelFor="contactPerson"
                                                 name="contactPerson"
                                                 type="text"
-                                                // value={this.state.contactPerson}
-                                                // onChange={this.handleChange}
+                                                value={client.contactPerson}
+                                                onChange={handleChange}
                                                 />
                                             </div>
+
                                             <div className="col-3">
                                                 <CustomClientForm className="w-100"
                                                 label="Contact Number"
                                                 labelFor="contactNo"
                                                 name="contactNo"
                                                 type="number"
-                                                // value={this.state.contactNo}
-                                                // onChange={this.handleChange}
+                                                value={client.contactNo}
+                                                onChange={handleChange}
                                                 />
                                             </div>
+
                                             <div className="col-3">
                                                 <CustomClientForm  className="w-100"
                                                 label="Contract Value"
                                                 labelFor="contractValue"
                                                 name="contractValue"
                                                 type="number"
-                                                // value={this.state.contractValue}
-                                                // onChange={this.handleChange}
+                                                value={client.contractValue}
+                                                onChange={handleChange}
                                                 />
                                             </div>
                                             
@@ -281,11 +350,11 @@ const Hookclient=(props) =>{
                                     </ModalBody>
                                     <ModalFooter>
 
-                                        {/* {this.state.isEdit?
-                                        <Button className="bg-primary w-100"  >Update Client</Button>
-                                        : */}
-                                        <Button  className="bg-primary w-100"  >Add New</Button>
-                                        
+                                        {isEdit?
+                                        <Button className="bg-primary w-100" onClick={handleUpdate} >Update Client</Button>
+                                        : 
+                                        <Button  className="bg-primary w-100" onClick={handleSubmit}  >Add New</Button>
+                                        }
                                         
                                     </ModalFooter>
                             </Modal>
@@ -299,4 +368,8 @@ const mapStateToProps=state=>({
     clients:state.ClientReducer.clients
 })
 
-export default connect(mapStateToProps, {getClients}) (Hookclient)
+export default connect(mapStateToProps, 
+                                    {getClients,
+                                    postClient,
+                                    deleteClient,
+                                    updateClient}) (HookClient)

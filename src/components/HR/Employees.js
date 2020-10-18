@@ -68,7 +68,7 @@ const Employees=(props)=>{
         e.preventDefault()
         // add employee via postEmployee action
         props.postEmployee(emp)
-        // close modal
+        // close modal 
         toggle()
         props.getEmployee()
     }
@@ -79,6 +79,12 @@ const Employees=(props)=>{
     }
 
     //Update Employees
+    const toggleUpdate=(id)=>{
+        setIsEdit(true)
+        toggle()
+        getSingleEmployee(id)
+    }
+
     const getSingleEmployee=(id)=>{
         setIsEdit(true)
         axios.get(`${url}/${id}`)
@@ -97,12 +103,6 @@ const Employees=(props)=>{
         })
     }
 
-    const toggleUpdate=(id)=>{
-        setIsEdit(true)
-        toggle()
-        getSingleEmployee(id)
-    }
-
     const handleUpdate=(e)=>{
         e.preventDefault()
 
@@ -110,6 +110,8 @@ const Employees=(props)=>{
         toggle()
         props.getEmployee()
     }
+
+    // update employees ends here
 
     
     const columns = [

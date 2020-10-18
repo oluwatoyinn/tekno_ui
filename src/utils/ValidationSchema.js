@@ -13,7 +13,7 @@ export const RegistrationSchema = Yup.object().shape({
         .required("Enter a valid email address"),
     password_confirmation:Yup.string()
         .oneOf([Yup.ref("password"),null],"Password must match")
-        .required('Confirm Password is required'),
+        .required('Please confirm password'),
 })
 
 export const LoginSchema = Yup.object().shape({
