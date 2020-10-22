@@ -5,7 +5,7 @@ import {Form, Formik, Field } from 'formik';
 import {RegistrationSchema} from '../utils/ValidationSchema'
 import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux' 
-import {CustomMaterialUiForm} from '../components/CustomFormikFormInput'
+// import {CustomMaterialUiForm} from '../components/CustomFormikFormInput'
 import {register} from '../actions/authAction'
 import PropTypes from 'prop-types';
 
@@ -15,10 +15,42 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {TextField} from 'formik-material-ui'
 
+// SHOW PASSWORD
+// import FormControl from '@material-ui/core/FormControl';
+import IconButton from '@material-ui/core/IconButton';
+// import FilledInput from '@material-ui/core/FilledInput';
+// import InputLabel from '@material-ui/core/InputLabel';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+// import clsx from 'clsx'
+
 
 const HooksRegister = ({register}) => {
     const history =useHistory()
  
+    // Show password start from here
+   
+
+    const [values, setValues] = React.useState({
+        showPassword: false,
+        confirmPassword:false
+      });
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+        };
+
+    const handleShowPassword = () => {
+        setValues({ ...values, confirmPassword: !values.confirmPassword });
+        };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+    
+    //   show password ends here
+
     const useStyles = makeStyles((theme) => ({
         root: {
             '& .MuiTextField-root': {
@@ -34,6 +66,7 @@ const HooksRegister = ({register}) => {
     }));
 
     const classes = useStyles();
+
     
     return (
             <Fragment>    
@@ -43,13 +76,14 @@ const HooksRegister = ({register}) => {
                             password:'',
                             password_confirmation:''
                         }}
-                        onSubmit={async(data)=>{
-                            // setSubmitting(true);
+                        onSubmit={async(data,{setSubmitting})=>{
+                            setSubmitting(false);
                             register(data,history)
+                            // alert(JSON.stringify(data, null, 2));
                         }}
                         validationSchema = {RegistrationSchema}
                     >
-                       {({isSubmitting})=>(
+                       {({submitForm,isSubmitting})=>(
 
                             <Form className={classes.root}  noValidate autoComplete="off" >  
                                 <div className="login_body">
@@ -74,25 +108,55 @@ const HooksRegister = ({register}) => {
                                                     name="email"
                                                     component={TextField}
                                                 />
+
                                                 <Field
-                                                
                                                     label="Password"
-                                                    type="password"
+                                                    type={values.showPassword ? 'text' : 'password'}
                                                     variant="filled"
                                                     name="password"
                                                     autoComplete="current-password"
                                                     component={TextField}
+                                                    InputProps={{
+                                                        endAdornment:(
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                aria-label="toggle password visibility"
+                                                                onClick={handleClickShowPassword}
+                                                                // onClick={showPassword} 
+                                                                onMouseDown={handleMouseDownPassword}
+                                                                edge="end"
+                                                                >
+                                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        )
+                                                    }}
                                                 />
+
                                                 <Field
-                                                    id="standard-password-input"
                                                     label="Confirm Password"
-                                                    type="password"
+                                                    type={values.confirmPassword ? 'text' : 'password'}
                                                     variant="filled"
                                                     name="password_confirmation"
                                                     autoComplete="current-password"
-                                                    className="pb-3"
                                                     component={TextField}
+                                                    InputProps={{
+                                                        endAdornment:(
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                aria-label="toggle password visibility"
+                                                                onClick={handleShowPassword}
+                                                                // onClick={showPassword} 
+                                                                onMouseDown={handleMouseDownPassword}
+                                                                edge="end"
+                                                                >
+                                                                {values.confirmPassword ? <Visibility /> : <VisibilityOff />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        )
+                                                    }}
                                                 />
+                                    
                                                 <div>
                                                     <Button 
                                                         startIcon={isSubmitting ? <CircularProgress size="1rem" /> :null}
@@ -101,6 +165,7 @@ const HooksRegister = ({register}) => {
                                                         color="primary" 
                                                         className=" m-2" 
                                                         disabled={isSubmitting}  
+                                                        onClick={submitForm}
                                                     >
                                                     Register
                                                     </Button>
@@ -120,7 +185,11 @@ HooksRegister.propTypes ={
     register:PropTypes.func.isRequired
 }
 
-export default connect(null,{register})(HooksRegister)
+const mapStateToProps =state=>({
+    showPassword:state.authReducer.showPassword
+})
+
+export default connect(mapStateToProps,{register})(HooksRegister)
 
 
 // export default SignUp;

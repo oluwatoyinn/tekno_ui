@@ -8,7 +8,8 @@ const initialState = {
     token:localStorage.getItem('jwt_token'),
     isAuthenticated:false,
     user:null,
-    isLoading:false
+    isLoading:false,
+    showPassword:false
 }
 
 
@@ -43,7 +44,9 @@ export default function(state=initialState,action){
             return {
                 ...state,
                 user:payload,
-                isLoading:false
+                isLoading:false,
+                showPassword:false
+
             }
         case LOGOUT:
             return {
