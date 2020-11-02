@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import DashBoard from './views/DashBoard';
 import store from './store'
@@ -33,6 +33,30 @@ if(accessToken){
 
 
 function App() {
+
+  const [isLogin, setIsLogin] =useState(false)
+  const [firstAlert, setFirstAlert] =useState(true)
+
+  const alertFirstTime=() =>{
+    if (firstAlert && !isLogin) {
+      setTimeout(function () {
+        window.alert(
+          `To explore the feature of this application, you can register or use the email and password below for the account
+
+          email:ovajayi@gmail.com
+          password:victor123
+        
+      `)
+      }, 500);
+      setFirstAlert(false)
+      // this.setState({ firstTimeAlert: false });
+    }
+  }
+
+  useEffect(()=>{
+    alertFirstTime()
+  })
+
   return (
     <React.Fragment>
     <Provider store={store}>
